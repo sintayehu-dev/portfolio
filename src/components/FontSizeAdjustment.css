@@ -1,0 +1,137 @@
+/* Font Size Adjustment - Increase all text by 20% */
+
+/* Home section */
+#home h2 {
+  font-size: 57.6px; /* 48px * 1.2 */
+}
+
+#home p {
+  font-size: 26.4px; /* 22px * 1.2 */
+}
+
+.cursor {
+  font-size: 28.8px; /* 24px * 1.2 */
+}
+
+#home .cv {
+  font-size: 19.2px; /* 16px * 1.2 */
+}
+
+.social-links a {
+  font-size: 1.68rem; /* 1.4rem * 1.2 */
+}
+
+/* About section */
+#about h2, .section-title h2 {
+  font-size: 24px; /* 20px * 1.2 */
+}
+
+.about-text p {
+  font-size: 18px; /* 15px * 1.2 */
+}
+
+.about-stats .stat-value {
+  font-size: 28.8px; /* 24px * 1.2 */
+}
+
+.about-stats .stat-title {
+  font-size: 15.6px; /* 13px * 1.2 */
+}
+
+/* Skills section */
+.skill-header h4 {
+  font-size: 19.2px; /* 16px * 1.2 */
+}
+
+.skill-tag {
+  font-size: 16.8px; /* 14px * 1.2 */
+}
+
+/* Services section */
+.service-card h3 {
+  font-size: 21.6px; /* 18px * 1.2 */
+}
+
+.service-card p {
+  font-size: 16.8px; /* 14px * 1.2 */
+}
+
+/* Portfolio section */
+.project-content h3 {
+  font-size: 19.2px; /* 16px * 1.2 */
+}
+
+.project-content p {
+  font-size: 16.8px; /* 14px * 1.2 */
+}
+
+.project-tech span {
+  font-size: 14.4px; /* 12px * 1.2 */
+}
+
+.btn-project {
+  font-size: 14.4px; /* 12px * 1.2 */
+}
+
+/* Contact section */
+.contact-section .section-title h2 {
+  font-size: 24px; /* 20px * 1.2 */
+}
+
+.form-input, .form-textarea {
+  font-size: 19.2px; /* 16px * 1.2 */
+}
+
+.submit-btn {
+  font-size: 19.2px; /* 16px * 1.2 */
+}
+
+/* Footer section */
+.footer-text {
+  font-size: 16.8px; /* 14px * 1.2 */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  #home h2 {
+    font-size: 43.2px; /* 36px * 1.2 */
+  }
+  
+  #home p {
+    font-size: 21.6px; /* 18px * 1.2 */
+  }
+  
+  .cursor {
+    font-size: 24px; /* 20px * 1.2 */
+  }
+}
+
+@media (max-width: 480px) {
+  #home h2 {
+    font-size: 36px; /* 30px * 1.2 */
+  }
+  
+  #home p {
+    font-size: 18px; /* 15px * 1.2 */
+  }
+  
+  .project-content h3 {
+    font-size: 17.4px; /* 14.5px * 1.2 */
+  }
+  
+  .project-content p {
+    font-size: 14.4px; /* 12px * 1.2 */
+  }
+  
+  .project-tech span {
+    font-size: 10.8px; /* 9px * 1.2 */
+  }
+  
+  .btn-project {
+    font-size: 10.8px; /* 9px * 1.2 */
+  }
+  
+  .submit-btn {
+    font-size: 16.8px; /* 14px * 1.2 */
+  }
+} 
