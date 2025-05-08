@@ -1,0 +1,312 @@
+#services {
+  background-color: var(--background-tertiary);
+  padding: 120px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Section Title - custom style to match About section */
+.section-title-custom {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 60px;
+  position: relative;
+  z-index: 1;
+}
+
+.section-title-custom h2 {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-color);
+  margin: 0 15px;
+  font-family: "Times New Roman", Times, serif;
+}
+
+.title-icon {
+  color: var(--accent-color);
+  font-size: 20px;
+}
+
+/* Background decoration */
+#services::before {
+  content: '';
+  position: absolute;
+  top: -150px;
+  right: -150px;
+  width: 350px;
+  height: 350px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(var(--accent-color-rgb), 0.15) 0%, rgba(var(--accent-color-rgb), 0) 70%);
+  z-index: 0;
+}
+
+#services::after {
+  content: '';
+  position: absolute;
+  bottom: -150px;
+  left: -150px;
+  width: 350px;
+  height: 350px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(var(--primary-color-rgb), 0.15) 0%, rgba(var(--primary-color-rgb), 0) 70%);
+  z-index: 0;
+}
+
+/* Timeline Container */
+.timeline-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  padding: 0 20px;
+  z-index: 1;
+}
+
+/* Center Line */
+.timeline-container::after {
+  content: '';
+  position: absolute;
+  width: 4px;
+  background: linear-gradient(to bottom, var(--accent-color), var(--primary-color));
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  margin-left: -2px;
+  border-radius: 4px;
+  z-index: 1;
+  box-shadow: 0 0 15px rgba(var(--accent-color-rgb), 0.3);
+}
+
+/* Timeline Items */
+.timeline-item {
+  padding: 15px 40px;
+  position: relative;
+  width: 50%;
+  margin-bottom: 30px;
+}
+
+/* Timeline dots at center with improved appearance */
+.timeline-item::after {
+  content: '';
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  right: -11px;
+  top: 50%;
+  border-radius: 50%;
+  border: 4px solid var(--accent-color);
+  background-color: var(--background-tertiary);
+  z-index: 2;
+  transform: translateY(-50%);
+  box-shadow: 0 0 15px rgba(var(--accent-color-rgb), 0.8);
+}
+
+/* Left side placement */
+.timeline-item.left {
+  left: 0;
+}
+
+/* Right side placement */
+.timeline-item.right {
+  left: 50%;
+}
+
+/* Adjust dot position for right items */
+.timeline-item.right::after {
+  left: -11px;
+}
+
+/* Add connecting lines from dots to content */
+.timeline-item.left::before,
+.timeline-item.right::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 20px;
+  height: 2px;
+  background: linear-gradient(to right, var(--accent-color), transparent);
+  transform: translateY(-50%);
+  z-index: 1;
+}
+
+.timeline-item.left::before {
+  right: 0;
+}
+
+.timeline-item.right::before {
+  left: 0;
+  background: linear-gradient(to left, var(--accent-color), transparent);
+}
+
+/* Timeline Content with enhanced styling */
+.timeline-content {
+  background: var(--card-bg);
+  border-radius: 20px;
+  padding: 25px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  position: relative;
+  border: 1px solid rgba(var(--accent-color-rgb), 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Subtle hover effect on cards */
+.timeline-content:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* Add decorative corner accent */
+.timeline-content::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 40%;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--accent-color));
+  border-radius: 0 3px 0 0;
+}
+
+.timeline-content::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 40%;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary-color), transparent);
+  border-radius: 0 0 0 3px;
+}
+
+/* Icon styling with enhanced effects */
+.service-icon {
+  font-size: 34px;
+  color: var(--accent-color);
+  margin-bottom: 15px;
+  filter: drop-shadow(0 0 8px rgba(var(--accent-color-rgb), 0.5));
+  transition: transform 0.3s ease, filter 0.3s ease;
+  display: inline-block;
+}
+
+.timeline-content:hover .service-icon {
+  transform: scale(1.1);
+  filter: drop-shadow(0 0 12px rgba(var(--accent-color-rgb), 0.8));
+}
+
+/* Title styling */
+.timeline-content h4 {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text-color);
+  margin-bottom: 15px;
+  font-family: "Times New Roman", Times, serif;
+}
+
+/* Description styling */
+.timeline-content p {
+  font-size: 14px;
+  font-weight: bold;
+  font-family: "Times New Roman", Times, serif;
+  text-align: justify;
+  color: var(--text-secondary);
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+  .timeline-container::after {
+    left: 40px;
+  }
+  
+  .timeline-item {
+    width: 100%;
+    padding-left: 80px;
+    padding-right: 40px;
+    left: 0;
+  }
+  
+  .timeline-item.right {
+    left: 0;
+  }
+  
+  .timeline-item::after {
+    left: 30px;
+    right: auto;
+  }
+  
+  .timeline-item.right::after {
+    left: 30px;
+  }
+  
+  .timeline-item.left::before,
+  .timeline-item.right::before {
+    left: 51px;
+    width: 30px;
+    background: linear-gradient(to right, var(--accent-color), transparent);
+  }
+  
+  .timeline-content h4 {
+    font-size: 20px;
+  }
+  
+  .timeline-content p {
+    font-size: 13px;
+    font-weight: normal;
+  }
+  
+  .section-title-custom h2 {
+    font-size: 20px;
+  }
+  
+  .title-icon {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 576px) {
+  .timeline-content {
+    padding: 20px;
+  }
+  
+  .timeline-item {
+    padding-left: 70px;
+    padding-right: 20px;
+  }
+  
+  #services {
+    padding: 80px 0;
+  }
+  
+  .timeline-item.left::before,
+  .timeline-item.right::before {
+    left: 41px;
+    width: 30px;
+  }
+  
+  .service-icon {
+    font-size: 28px;
+  }
+  
+  .timeline-content h4 {
+    font-size: 16px;
+  }
+  
+  .timeline-content p {
+    font-size: 13px;
+    font-weight: normal;
+    line-height: 1.5;
+  }
+  
+  .section-title-custom {
+    margin-bottom: 40px;
+  }
+  
+  .section-title-custom h2 {
+    font-size: 20px;
+  }
+  
+  .title-icon {
+    font-size: 16px;
+  }
+} 

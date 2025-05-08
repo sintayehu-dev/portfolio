@@ -1,5 +1,140 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Kode+Mono:wght@400;500;600;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', 'Kode Mono', sans-serif;
+  background-color: #000;
+  color: #fff;
+}
+
 .App {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+/* Section common styles */
+.section {
+  padding: 100px 0;
+  min-height: 100vh;
+  position: relative;
+  background-color: var(--background-color);
+}
+
+.section-title {
   text-align: center;
+  margin-bottom: 60px;
+}
+
+.section-title h2 {
+  font-size: 20px;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  position: relative;
+  color: var(--text-color);
+}
+
+.section-title h2::after {
+  content: '';
+  position: absolute;
+  display: block;
+  width: 50px;
+  height: 3px;
+  background: var(--accent-color);
+  bottom: 0;
+  left: calc(50% - 25px);
+}
+
+.section-title p {
+  margin-bottom: 0;
+  font-size: 18px;
+  color: var(--text-color);
+  opacity: 0.7;
+}
+
+/* Custom section title with chevron icons */
+.section-title-custom {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 60px;
+  gap: 15px;
+}
+
+.section-title-custom h2 {
+  font-size: 20px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--text-color);
+  margin: 0;
+}
+
+.title-icon {
+  color: var(--accent-color);
+  font-size: 24px;
+}
+
+.container {
+  width: 100%;
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+/* Placeholder styling */
+.placeholder {
+  padding: 50px;
+  border: 2px dashed var(--placeholder-border);
+  border-radius: 10px;
+  text-align: center;
+  margin: 20px 0;
+  background-color: var(--placeholder-bg);
+  transition: all 0.3s ease;
+}
+
+.placeholder:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px var(--shadow-color);
+}
+
+.placeholder h3 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: var(--accent-color);
+}
+
+.placeholder p {
+  color: var(--text-color);
+  opacity: 0.8;
+  margin-bottom: 10px;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .section {
+    padding: 80px 0;
+  }
+  
+  .section-title h2 {
+    font-size: 20px;
+  }
+  
+  .section-title-custom h2 {
+    font-size: 20px;
+  }
+  
+  .placeholder {
+    padding: 30px;
+  }
 }
 
 .App-logo {

@@ -1,0 +1,379 @@
+#portfolio {
+  background-color: var(--background-tertiary);
+  padding: 70px 0;
+  overflow: hidden;
+}
+
+/* Slider container */
+.slider-container {
+  position: relative;
+  width: 100%;
+  max-width: 1080px;
+  margin: 0 auto;
+  overflow: hidden;
+  padding: 25px 0 45px;
+  border-radius: 12px;
+}
+
+/* Slides wrapper */
+.slides {
+  display: flex;
+  transition: transform 0.8s cubic-bezier(0.25, 0.1, 0.25, 1);
+  width: 100%;
+}
+
+/* Individual slide */
+.slide {
+  flex: 0 0 33.333%;
+  width: 33.333%;
+  padding: 0 8px;
+  box-sizing: border-box;
+}
+
+/* Navigation buttons */
+.slider-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: var(--accent-color);
+  color: var(--background-secondary);
+  border: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  z-index: 20;
+  opacity: 0.85;
+  transition: all 0.3s ease;
+}
+
+.slider-btn span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  transform: translateX(1px);
+}
+
+.slider-btn:hover {
+  opacity: 1;
+  transform: translateY(-50%) scale(1.1);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+.next-btn {
+  right: 12px;
+}
+
+/* Dots navigation */
+.slider-dots {
+  text-align: center;
+  margin-top: 20px;
+  position: relative;
+  z-index: 10;
+}
+
+.dot {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  margin: 0 4px;
+  background-color: var(--background-secondary);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.dot:hover {
+  transform: scale(1.2);
+  background-color: rgba(50, 252, 235, 0.5);
+}
+
+.dot.active {
+  background-color: var(--accent-color);
+  width: 10px;
+  height: 10px;
+  box-shadow: 0 0 8px rgba(50, 252, 235, 0.5);
+}
+
+/* Project card styling - MODERN REDESIGN */
+.project-card {
+  width: 90%;
+  height: 100%;
+  margin: 0 auto;
+  background: rgba(var(--background-secondary-rgb), 0.7);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transform: perspective(1000px) rotateY(0deg);
+}
+
+.project-card:hover {
+  transform: perspective(1000px) rotateY(5deg) translateY(-10px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+}
+
+.project-image {
+  width: 100%;
+  height: 160px;
+  overflow: hidden;
+  position: relative;
+}
+
+.project-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.7));
+  opacity: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.4s ease;
+  backdrop-filter: blur(3px);
+}
+
+.project-card:hover .project-overlay {
+  opacity: 1;
+}
+
+.project-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  transition: transform 0.8s ease;
+}
+
+.project-card:hover .project-image img {
+  transform: scale(1.1);
+}
+
+.project-content {
+  padding: 20px;
+  position: relative;
+  background: transparent;
+}
+
+/* Remove the pseudo-element that created the curved top */
+.project-content::before {
+  display: none;
+}
+
+.project-content h3 {
+  margin: 0 0 10px;
+  font-size: 1rem;
+  font-family: "Times New Roman", Times, serif;
+  font-weight: 700;
+  color: var(--text-primary);
+  position: relative;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.project-content p {
+  margin: 0 0 15px;
+  color: var(--text-secondary);
+  font-size: 0.8rem;
+  font-family: "Times New Roman", Times, serif;
+  line-height: 1.5;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.project-tech {
+  margin-bottom: 0;
+  padding-top: 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  position: relative;
+}
+
+.project-tech span {
+  font-size: 0.85rem;
+  font-family: "Times New Roman", Times, serif;
+  color: var(--accent-color);
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.project-links {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.btn-project {
+  padding: 8px 16px;
+  background-color: var(--accent-color);
+  color: var(--background-secondary);
+  border-radius: 30px;
+  text-decoration: none;
+  font-size: 0.75rem;
+  font-weight: 600;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  letter-spacing: 0.5px;
+  border: 1.5px solid transparent;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.btn-project::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.1);
+  transition: all 0.4s ease;
+  z-index: -1;
+}
+
+.btn-project:hover::before {
+  width: 100%;
+}
+
+.btn-project:hover {
+  background-color: transparent;
+  border-color: var(--accent-color);
+  color: var(--accent-color);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 992px) {
+  .slider-container {
+    max-width: 900px;
+  }
+  
+  .slide {
+    flex: 0 0 33.333%;
+    width: 33.333%;
+  }
+  
+  .project-image {
+    height: 140px;
+  }
+  
+  .project-content {
+    padding: 16px;
+  }
+  
+  .project-tech span {
+    font-size: 0.8rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  #portfolio {
+    padding: 50px 0;
+  }
+  
+  .slider-container {
+    max-width: 85%;
+    padding-bottom: 30px;
+  }
+  
+  .slide {
+    flex: 0 0 50%;
+    width: 50%;
+    padding: 0 5px;
+  }
+  
+  .project-image {
+    height: 130px;
+  }
+  
+  .project-card {
+    width: 90%;
+  }
+  
+  .project-content {
+    padding: 15px;
+  }
+  
+  .slider-btn {
+    width: 32px;
+    height: 32px;
+    font-size: 14px;
+  }
+  
+  .dot {
+    width: 6px;
+    height: 6px;
+    margin: 0 3px;
+  }
+  
+  .dot.active {
+    width: 9px;
+    height: 9px;
+  }
+  
+  .project-tech span {
+    font-size: 0.75rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .slider-container {
+    max-width: 90%;
+    padding-bottom: 25px;
+  }
+  
+  .slide {
+    flex: 0 0 100%;
+    width: 100%;
+  }
+  
+  .project-image {
+    height: 150px;
+  }
+  
+  .project-card {
+    width: 85%;
+  }
+  
+  .project-content h3 {
+    font-size: 0.95rem;
+  }
+  
+  .project-content p {
+    font-size: 0.8rem;
+  }
+  
+  .project-content {
+    padding: 15px;
+  }
+  
+  .project-tech span {
+    font-size: 0.7rem;
+  }
+  
+  .btn-project {
+    padding: 7px 14px;
+    font-size: 0.75rem;
+  }
+} 

@@ -1,0 +1,9 @@
+Please add your profile photo to this directory as "profile-photo.jpg"
+
+For best results:
+- Use a professional photo with good lighting
+- Recommended dimensions: 600x800 px 
+- Make sure your face is clearly visible
+- Use JPG format for best web performance
+
+This image will be displayed in the About section of your portfolio. 
