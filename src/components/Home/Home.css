@@ -2,7 +2,7 @@
 #home {
   height: 100vh;
   position: relative;
-  background: url("../../assets/images/hero-bg.PNG") center/cover no-repeat fixed;
+  background: rgba(0, 0, 0);
   border-radius: var(--border-radius);
   min-height: 700px;
   overflow: hidden;
