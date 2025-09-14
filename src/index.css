@@ -1,6 +1,6 @@
 :root {
   /* Common variables */
-  --font-family: 'Poppins', 'Kode Mono', sans-serif;
+  --font-family: 'Outfit', 'Poppins', 'Kode Mono', sans-serif;
   --border-radius: 0px;
   
   /* Dark theme (default) */
@@ -24,6 +24,9 @@
   --accent-color-rgb: 50, 252, 235;
   --primary-color-rgb: 255, 165, 0;
   --background-secondary-rgb: 5, 5, 5;
+  --text-secondary-rgb: 224, 224, 224;
+  --border-color: rgba(255, 255, 255, 0.1);
+  --primary-color-dark: #cc8400;
 }
 
 [data-theme='light'] {
@@ -47,6 +50,9 @@
   --accent-color-rgb: 12, 184, 184;
   --primary-color-rgb: 255, 107, 0;
   --background-secondary-rgb: 238, 238, 238;
+  --text-secondary-rgb: 85, 85, 85;
+  --border-color: rgba(0, 0, 0, 0.1);
+  --primary-color-dark: #cc5500;
 }
 
 body {

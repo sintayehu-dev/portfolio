@@ -1,161 +1,147 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import './Contact.css';
-import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
+import { FaPaperPlane } from 'react-icons/fa';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
+    subject: '',
     message: ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitResult, setSubmitResult] = useState(null);
-
-  // Add useEffect to clear the success message after a delay
-  useEffect(() => {
-    let fadeTimer;
-    let removeTimer;
-    
-    if (submitResult && submitResult.success) {
-      // Set timer to add the fade-out class after 4 seconds
-      fadeTimer = setTimeout(() => {
-        const resultElement = document.querySelector('.form-result');
-        if (resultElement) {
-          resultElement.classList.add('fade-out');
-        }
-      }, 4000);
-      
-      // Set timer to completely remove the message after animation completes
-      removeTimer = setTimeout(() => {
-        setSubmitResult(null);
-      }, 4500); // 4000ms + 500ms for the animation
-    }
-    
-    // Clear timeouts when component unmounts or submitResult changes
-    return () => {
-      if (fadeTimer) clearTimeout(fadeTimer);
-      if (removeTimer) clearTimeout(removeTimer);
-    };
-  }, [submitResult]);
+  const [submitStatus, setSubmitStatus] = useState('');
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
     setFormData({
       ...formData,
-      [name]: value
+      [e.target.name]: e.target.value
     });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-    setSubmitResult(null);
+    setSubmitStatus('');
 
+    // Simulate form submission
     try {
-      // Simulate form submission
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
-      // Success message
-      setSubmitResult({
-        success: true,
-        message: 'Thank you for your message! I will get back to you soon.'
-      });
-      
-      // Reset form
-      setFormData({
-        name: '',
-        email: '',
-        message: ''
-      });
+      await new Promise(resolve => setTimeout(resolve, 2000));
+      setSubmitStatus('success');
+      setFormData({ name: '', email: '', subject: '', message: '' });
     } catch (error) {
-      setSubmitResult({
-        success: false,
-        message: 'Something went wrong. Please try again later.'
-      });
+      setSubmitStatus('error');
     } finally {
       setIsSubmitting(false);
     }
   };
 
   return (
-    <section id="contact" className="section contact-section">
-      <div className="container">
-        <div className="section-title-custom hidden" data-animation="animate-fade-up">
-          <FaChevronLeft className="title-icon" />
-          <h2>Contact Me</h2>
-          <FaChevronRight className="title-icon" />
+    <div className="contact-page" style={{ paddingTop: '100px' }}>
+      <div className="contact-container">
+        {/* Header Section */}
+        <div className="contact-header">
+          <h1 className="contact-title">Get In Touch</h1>
+          <p className="contact-subtitle">
+            I'm always interested in new opportunities and exciting projects. 
+            Let's discuss how we can work together!
+          </p>
         </div>
 
-        <div className="contact-content">
-          <div className="map-container hidden" data-animation="animate-from-left" data-delay="delay-200">
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d159374.43208662453!2d38.71406030015643!3d9.145000393012566!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1635491fff961f93%3A0x4f507b27629295c5!2sAddis%20Ababa%2C%20Ethiopia!5e0!3m2!1sen!2sus!4v1649292464588!5m2!1sen!2sus"
-              title="Addis Ababa Map"
-              frameBorder="0"
-              allowFullScreen
-              loading="lazy"
-              aria-label="Google Maps location of Addis Ababa, Ethiopia"
-            ></iframe>
-          </div>
+        {/* Contact Form */}
+        <div className="contact-form-wrapper">
+          <div className="contact-form-container">
+            <h2 className="form-title">Send Me a Message</h2>
+            <p className="form-subtitle">
+              Have a project in mind or want to collaborate? I'd love to hear from you!
+            </p>
+            <form className="contact-form" onSubmit={handleSubmit}>
+              <div className="form-row">
+                <div className="form-group">
+                  <label htmlFor="name">Name</label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    required
+                    placeholder="Your full name"
+                  />
+                </div>
 
-          <div className="form-container hidden" data-animation="animate-from-right" data-delay="delay-300">
-            <form onSubmit={handleSubmit} className="contact-form">
-              <input
-                type="text"
-                name="name"
-                value={formData.name}
-                onChange={handleChange}
-                placeholder="Your Name"
-                required
-                className="form-input"
-                aria-label="Your Name"
-              />
-              
-              <input
-                type="email"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-                placeholder="Your Email"
-                required
-                className="form-input"
-                aria-label="Your Email"
-              />
-              
-              <textarea
-                name="message"
-                value={formData.message}
-                onChange={handleChange}
-                placeholder="Your Message..."
-                required
-                className="form-textarea"
-                aria-label="Your Message"
-              ></textarea>
-              
+                <div className="form-group">
+                  <label htmlFor="email">Email</label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    required
+                    placeholder="your.email@example.com"
+                  />
+                </div>
+              </div>
+
+              <div className="form-group">
+                <label htmlFor="subject">Subject</label>
+                <input
+                  type="text"
+                  id="subject"
+                  name="subject"
+                  value={formData.subject}
+                  onChange={handleChange}
+                  required
+                  placeholder="What's this about?"
+                />
+              </div>
+
+              <div className="form-group">
+                <label htmlFor="message">Message</label>
+                <textarea
+                  id="message"
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  required
+                  rows="6"
+                  placeholder="Tell me about your project or idea..."
+                ></textarea>
+              </div>
+
               <button 
                 type="submit" 
-                className="submit-btn"
+                className={`submit-btn ${isSubmitting ? 'submitting' : ''}`}
                 disabled={isSubmitting}
-                aria-label={isSubmitting ? 'Sending message...' : 'Submit message'}
               >
-                {isSubmitting ? 'Sending...' : 'Submit'}
+                {isSubmitting ? (
+                  <>
+                    <div className="spinner"></div>
+                    Sending...
+                  </>
+                ) : (
+                  <>
+                    <FaPaperPlane />
+                    Send Message
+                  </>
+                )}
               </button>
-              
-              {submitResult && (
-                <div 
-                  className={`form-result ${submitResult.success ? 'success' : 'error'}`}
-                  role="alert"
-                  aria-live="assertive"
-                >
-                  {submitResult.message}
+
+              {submitStatus && (
+                <div className={`submit-status ${submitStatus}`}>
+                  {submitStatus === 'success' 
+                    ? 'Message sent successfully! I\'ll get back to you soon.' 
+                    : 'Failed to send message. Please try again.'
+                  }
                 </div>
               )}
             </form>
           </div>
         </div>
       </div>
-    </section>
+    </div>
   );
 };
 
-export default Contact; 
+export default Contact;

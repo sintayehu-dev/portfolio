@@ -1,15 +1,46 @@
 import React, { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import './App.css';
-import Home from './components/Home/Home';
 import Navbar from './components/Navbar/Navbar';
-import About from './components/About/About';
-import Skills from './components/Skills/Skills';
-import Services from './components/Services/Services';
-import Portfolio from './components/Portfolio/Portfolio';
-import Contact from './components/Contact/Contact';
 import Footer from './components/Footer/Footer';
 import Preloader from './components/Preloader/Preloader';
-import { initScrollAnimation } from './utils/scrollAnimation';
+import Home from './pages/Home';
+import Projects from './pages/Projects';
+import Contact from './pages/Contact';
+import ProjectDetailPage from './pages/ProjectDetail';
+import NotFound from './pages/NotFound';
+import { initScrollAnimation, triggerAnimations } from './utils/scrollAnimation';
+
+// Component to handle route changes and scroll animations
+function AppContent() {
+  const location = useLocation();
+
+  useEffect(() => {
+    // Reinitialize scroll animations on route change
+    const cleanup = initScrollAnimation();
+    
+    // Also trigger animations immediately for visible elements
+    setTimeout(() => {
+      triggerAnimations();
+    }, 100);
+    
+    return cleanup;
+  }, [location.pathname]);
+
+  return (
+    <>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/projects" element={<Projects />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/project/:id" element={<ProjectDetailPage />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+      <Footer />
+    </>
+  );
+}
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -23,31 +54,16 @@ function App() {
     return () => clearTimeout(timer);
   }, []);
 
-  useEffect(() => {
-    // Initialize scroll animations after preloading is complete
-    if (!isLoading) {
-      const cleanup = initScrollAnimation();
-      return cleanup;
-    }
-  }, [isLoading]);
-
   return (
-    <div className="App">
-      {isLoading ? (
-        <Preloader />
-      ) : (
-        <>
-          <Navbar />
-          <Home />
-          <About />
-          <Skills />
-          <Services />
-          <Portfolio />
-          <Contact />
-          <Footer />
-        </>
-      )}
-    </div>
+    <Router>
+      <div className="App">
+        {isLoading ? (
+          <Preloader />
+        ) : (
+          <AppContent />
+        )}
+      </div>
+    </Router>
   );
 }
 

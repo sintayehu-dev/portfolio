@@ -31,8 +31,32 @@ export const initScrollAnimation = () => {
     });
   };
 
-  // Initial check on page load
-  setTimeout(handleScrollAnimation, 100);
+  // Function to trigger animations immediately for visible elements
+  const triggerVisibleAnimations = () => {
+    const animatedElements = document.querySelectorAll('.hidden');
+    
+    animatedElements.forEach(element => {
+      // Check if element is already visible or in viewport
+      if (isInViewport(element, 0) || element.getBoundingClientRect().top < window.innerHeight) {
+        // Remove 'hidden' class and add the appropriate animation class
+        element.classList.remove('hidden');
+        
+        // Add animation class based on data attribute
+        if (element.dataset.animation) {
+          element.classList.add(element.dataset.animation);
+        }
+        
+        // Add delay class if specified
+        if (element.dataset.delay) {
+          element.classList.add(element.dataset.delay);
+        }
+      }
+    });
+  };
+
+  // Initial check on page load and route changes
+  setTimeout(triggerVisibleAnimations, 100);
+  setTimeout(handleScrollAnimation, 200);
   
   // Add scroll event listener
   window.addEventListener('scroll', handleScrollAnimation, { passive: true });
@@ -41,4 +65,24 @@ export const initScrollAnimation = () => {
   return () => {
     window.removeEventListener('scroll', handleScrollAnimation);
   };
+};
+
+// Export function to manually trigger animations
+export const triggerAnimations = () => {
+  const animatedElements = document.querySelectorAll('.hidden');
+  
+  animatedElements.forEach(element => {
+    // Remove 'hidden' class and add the appropriate animation class
+    element.classList.remove('hidden');
+    
+    // Add animation class based on data attribute
+    if (element.dataset.animation) {
+      element.classList.add(element.dataset.animation);
+    }
+    
+    // Add delay class if specified
+    if (element.dataset.delay) {
+      element.classList.add(element.dataset.delay);
+    }
+  });
 }; 

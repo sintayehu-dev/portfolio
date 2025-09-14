@@ -1,0 +1,392 @@
+/* Project Detail Modal Styles */
+.project-detail-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(5px);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  z-index: 1000;
+  padding: 2rem;
+  overflow-y: auto;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.project-detail-modal {
+  background: var(--background-color);
+  border-radius: 12px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  max-width: 900px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  margin: 2rem auto;
+  animation: slideUp 0.3s ease-out;
+}
+
+/* Close button */
+.project-detail-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: rgba(0, 0, 0, 0.1);
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  transition: all 0.2s ease;
+  color: var(--text-primary);
+}
+
+.project-detail-close:hover {
+  background: rgba(0, 0, 0, 0.2);
+  transform: scale(1.1);
+}
+
+.project-detail-close span {
+  font-size: 24px;
+  font-weight: 300;
+  line-height: 1;
+}
+
+/* Project header */
+.project-detail-header {
+  position: relative;
+  padding: 2rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.project-detail-image {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+}
+
+.project-detail-info {
+  text-align: center;
+}
+
+.project-detail-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: var(--text-primary);
+  line-height: 1.2;
+}
+
+.project-detail-meta {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.project-detail-meta span {
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.project-category {
+  background: var(--primary-color, #007bff);
+  color: white;
+}
+
+.project-status {
+  background: #28a745;
+  color: white;
+}
+
+.project-duration {
+  background: var(--secondary-color, #6c757d);
+  color: white;
+}
+
+.project-team {
+  background: var(--accent-color, #17a2b8);
+  color: white;
+}
+
+/* Project content */
+.project-detail-content {
+  padding: 2rem;
+}
+
+.project-section {
+  margin-bottom: 2.5rem;
+}
+
+.project-section:last-child {
+  margin-bottom: 0;
+}
+
+.project-section h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: var(--text-primary);
+  border-bottom: 2px solid var(--primary-color, #007bff);
+  padding-bottom: 0.5rem;
+}
+
+.project-detailed-description {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  text-align: justify;
+}
+
+/* Technologies */
+.project-technologies {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.technology-tag {
+  background: var(--background-secondary);
+  color: var(--text-primary);
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  border: 1px solid var(--border-color);
+  transition: all 0.2s ease;
+}
+
+.technology-tag:hover {
+  background: var(--primary-color, #007bff);
+  color: white;
+  transform: translateY(-2px);
+}
+
+/* Features and Challenges */
+.project-features,
+.project-challenges {
+  list-style: none;
+  padding: 0;
+}
+
+.feature-item,
+.challenge-item {
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--border-color);
+  position: relative;
+  padding-left: 2rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+.feature-item:last-child,
+.challenge-item:last-child {
+  border-bottom: none;
+}
+
+.feature-item::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  top: 0.75rem;
+  color: #28a745;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.challenge-item::before {
+  content: "⚡";
+  position: absolute;
+  left: 0;
+  top: 0.75rem;
+  font-size: 1.1rem;
+}
+
+/* Screenshots */
+.project-screenshots {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+}
+
+.screenshot-image {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  transition: transform 0.2s ease;
+  max-height: 400px;
+}
+
+.screenshot-image:hover {
+  transform: scale(1.05);
+}
+
+/* Action buttons */
+.project-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.project-action-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  border: 2px solid transparent;
+}
+
+.github-btn {
+  background: #333;
+  color: white;
+}
+
+.github-btn:hover {
+  background: #555;
+  transform: translateY(-2px);
+}
+
+.demo-btn {
+  background: var(--primary-color, #007bff);
+  color: white;
+}
+
+.demo-btn:hover {
+  background: var(--primary-color-dark);
+  transform: translateY(-2px);
+}
+
+/* Footer */
+.project-detail-footer {
+  padding: 1.5rem 2rem;
+  border-top: 1px solid var(--border-color, #e0e0e0);
+  text-align: center;
+}
+
+.back-to-grid-btn {
+  background: var(--background-secondary);
+  color: var(--text-primary);
+  border: 2px solid var(--border-color, #e0e0e0);
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.back-to-grid-btn:hover {
+  background: var(--primary-color, #007bff);
+  color: white;
+  border-color: var(--primary-color, #007bff);
+  transform: translateY(-2px);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .project-detail-overlay {
+    padding: 1rem;
+  }
+
+  .project-detail-modal {
+    margin: 1rem auto;
+    max-height: 95vh;
+  }
+
+  .project-detail-header {
+    padding: 1.5rem;
+  }
+
+  .project-detail-content {
+    padding: 1.5rem;
+  }
+
+  .project-detail-title {
+    font-size: 2rem;
+  }
+
+  .project-detail-meta {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .project-actions {
+    flex-direction: column;
+  }
+
+  .project-action-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .project-screenshots {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .project-detail-overlay {
+    padding: 0.5rem;
+  }
+
+  .project-detail-header {
+    padding: 1rem;
+  }
+
+  .project-detail-content {
+    padding: 1rem;
+  }
+
+  .project-detail-title {
+    font-size: 1.75rem;
+  }
+
+  .project-section h2 {
+    font-size: 1.25rem;
+  }
+
+  .project-detail-footer {
+    padding: 1rem;
+  }
+}
+
+/* Dark theme support - now handled by CSS variables */

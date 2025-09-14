@@ -3,7 +3,7 @@
   color: #fff;
   padding: 60px 0 30px;
   position: relative;
-  font-family: "Times New Roman", Times, serif;
+  font-family: var(--font-family);
 }
 
 .footer-content {
@@ -28,14 +28,14 @@
 .footer-logo-area h4 {
   font-size: 1.8rem;
   margin-bottom: 5px;
-  font-family: "Times New Roman", Times, serif;
+  font-family: var(--font-family);
 }
 
 .footer-logo-area p {
   font-size: 0.8rem;
   opacity: 0.7;
   margin-bottom: 15px;
-  font-family: "Times New Roman", Times, serif;
+  font-family: var(--font-family);
 }
 
 .footer-logo-area .social-links {
@@ -74,7 +74,7 @@
   color: var(--primary-color);
   position: relative;
   padding-bottom: 8px;
-  font-family: "Times New Roman", Times, serif;
+  font-family: var(--font-family);
   font-weight: bold;
 }
 
@@ -110,7 +110,7 @@
   text-decoration: none;
   font-size: 0.8rem;
   transition: color 0.3s ease;
-  font-family: "Times New Roman", Times, serif;
+  font-family: var(--font-family);
 }
 
 .contact-item a:hover {
@@ -192,7 +192,7 @@
 .footer-bottom p {
   font-size: 0.75rem;
   opacity: 0.7;
-  font-family: "Times New Roman", Times, serif;
+  font-family: var(--font-family);
 }
 
 .footer-bottom-links {
@@ -203,7 +203,7 @@
 .footer-bottom-links p {
   font-size: 0.75rem;
   color: var(--primary-color);
-  font-family: "Times New Roman", Times, serif;
+  font-family: var(--font-family);
   font-style: italic;
 }
 
@@ -213,7 +213,7 @@
   font-size: 0.75rem;
   opacity: 0.7;
   transition: opacity 0.3s ease;
-  font-family: "Times New Roman", Times, serif;
+  font-family: var(--font-family);
 }
 
 .footer-bottom-links a:hover {

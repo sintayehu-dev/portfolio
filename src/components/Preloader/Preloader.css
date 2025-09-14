@@ -130,7 +130,7 @@
   transform: translateX(-50%);
   font-size: 0.8rem;
   color: var(--text-primary);
-  font-family: "Times New Roman", Times, serif;
+  font-family: var(--font-family);
 }
 
 /* Media queries */
