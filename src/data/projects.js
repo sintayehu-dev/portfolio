@@ -63,187 +63,126 @@ const projects = [
     teamSize: 4
   },
   {
-    id: 2,
-    title: "E-Commerce Website",
-    description: "A fully responsive e-commerce platform with user authentication and payment processing.",
-    detailedDescription: "A comprehensive e-commerce solution built with modern web technologies. This platform provides a complete shopping experience with secure user authentication, robust payment processing through Stripe integration, and an intuitive admin dashboard for inventory management. The application features a responsive design that works seamlessly across all devices and includes advanced features like shopping cart persistence, order tracking, and email notifications.",
-    image: "/assets/ecommerce.png",
-    screenshots: [
-      "/assets/ecommerce.png",
-      "/assets/ecommerce-dashboard.png",
-      "/assets/ecommerce-mobile.png"
-    ],
-    technologies: ["React", "Django", "PostgreSQL", "Stripe", "Redux", "Django REST Framework"],
-    github: "#",
-    demo: "#",
-    features: [
-      "User authentication and authorization with JWT tokens",
-      "Shopping cart functionality with persistent storage",
-      "Secure payment processing with Stripe integration",
-      "Admin dashboard for inventory and order management",
-      "Responsive design optimized for all devices",
-      "Email notifications for order confirmations",
-      "Advanced search and filtering capabilities",
-      "User profile management and order history"
-    ],
-    challenges: [
-      "Implementing secure payment processing while maintaining PCI compliance",
-      "Optimizing database queries for large product catalogs",
-      "Creating a responsive design that works across all device sizes",
-      "Managing complex state for shopping cart and user sessions",
-      "Integrating real-time inventory updates across multiple users"
-    ],
-    category: "Full Stack",
-    status: "Completed",
-    duration: "3 months",
-    teamSize: 1
-  },
-  {
     id: 3,
-    title: "Haile Resort Clone",
-    description: "A beautiful recreation of Haile Resort website with modern UI design and responsive layout.",
-    detailedDescription: "A pixel-perfect recreation of the Haile Resort website featuring modern web design principles and responsive layouts. This project showcases advanced CSS techniques, smooth animations, and interactive elements that create an engaging user experience. The website includes booking functionality, image galleries, and detailed resort information presented in an elegant, professional manner.",
-    image: "/assets/haileresort.png",
-    screenshots: [
-      "/assets/haileresort.png",
-      "/assets/haileresort-rooms.png",
-      "/assets/haileresort-booking.png"
-    ],
-    technologies: ["HTML5", "CSS3", "JavaScript", "Bootstrap", "PHP", "MySQL", "jQuery"],
+    title: "E‑learning Platform – Interactive Simulations",
+    description: "Mobile platform for interactive STEM simulations and concept visualizations.",
+    detailedDescription: "An E‑learning mobile application built with Flutter that delivers interactive simulations for STEM subjects. Learners can manipulate parameters in real time, visualize outcomes, and track progress. The backend services are implemented in Golang and exposed via secure REST APIs.",
+    image: "/assets/Elearning.png",
+    videoUrl: "https://www.youtube.com/embed/gnvf9yXHB1o",
+    documentUrl: "https://example.com/e-learning-platform-doc.pdf",
+    screenshots: [],
+    technologies: ["Flutter", "Dart", "BLoC", "Clean Architecture", "REST API", "Golang (Backend)"],
     github: "#",
     demo: "#",
     features: [
-      "Responsive design with mobile-first approach",
-      "Interactive image galleries with lightbox functionality",
-      "Booking system with date selection and availability checking",
-      "Smooth scroll animations and hover effects",
-      "Contact form with server-side validation",
-      "Room showcase with detailed descriptions and pricing",
-      "Location integration with interactive maps",
-      "Multi-language support for international visitors"
+      "Interactive, parameter‑driven simulations",
+      "Concept visualizations with charts/animations",
+      "Progress tracking and session persistence",
+      "Authoring model for adding new simulations",
+      "Responsive UI for phones and tablets"
     ],
     challenges: [
-      "Recreating complex layouts without modern CSS Grid support",
-      "Implementing smooth animations while maintaining performance",
-      "Creating a booking system with real-time availability",
-      "Optimizing images for fast loading without quality loss",
-      "Ensuring cross-browser compatibility across older browsers"
+      "Rendering performance for complex visuals",
+      "Designing an extensible simulation model",
+      "Accessible controls and gestures"
     ],
-    category: "Frontend",
+    category: "Mobile App",
     status: "Completed",
     duration: "2 months",
     teamSize: 1
   },
   {
-    id: 4,
-    title: "Ethiopian Recipe App",
-    description: "An application showcasing traditional Ethiopian recipes with step-by-step cooking instructions.",
-    detailedDescription: "A comprehensive recipe application dedicated to preserving and sharing traditional Ethiopian cuisine. The app features an extensive collection of authentic recipes with detailed step-by-step instructions, ingredient lists, and cultural context. Built with React and Firebase, it provides real-time data synchronization and allows users to save favorite recipes, create shopping lists, and share their own family recipes with the community.",
-    image: "/assets/ethiorecipe.png",
-    screenshots: [
-      "/assets/ethiorecipe.png",
-      "/assets/ethiorecipe-detail.png",
-      "/assets/ethiorecipe-favorites.png"
-    ],
-    technologies: ["React", "Firebase", "Styled Components", "React Router", "Context API"],
+    id: 2,
+    title: "Communication Book App (CRM)",
+    description: "Teacher–Parent Communication App bridging educational communication gaps.",
+    detailedDescription: "A mobile-first communication platform designed to connect teachers and parents in real time. It supports announcements, attendance, behaviour reports, homework updates, and direct messaging. Built to reduce communication gaps, improve parent engagement, and streamline classroom coordination.",
+    image: "/assets/comunication.png",
+    // YouTube embed URL for the provided video
+    videoUrl: "https://www.youtube.com/embed/KwnRgls2BzY",
+    documentUrl: "https://example.com/communication-book-app-doc.pdf",
+    screenshots: [],
+    technologies: ["Flutter", "Dart", "BLoC", "Clean Architecture", "Firebase", "REST API"],
     github: "#",
     demo: "#",
     features: [
-      "Extensive collection of traditional Ethiopian recipes",
-      "Step-by-step cooking instructions with images",
-      "Ingredient lists with measurement conversions",
-      "User authentication and profile management",
-      "Favorite recipes and personal collections",
-      "Recipe search and filtering by ingredients or cuisine type",
-      "Shopping list generation from recipe ingredients",
-      "Community features for sharing and rating recipes",
-      "Cultural context and history for each dish"
+      "Announcements and broadcast messages",
+      "Attendance and behaviour tracking",
+      "Homework updates and reminders",
+      "Direct teacher–parent messaging",
+      "Multi-school and multi-class support",
+      "Push notifications for real-time updates"
     ],
     challenges: [
-      "Organizing complex recipe data with multiple cooking steps",
-      "Implementing efficient search functionality across large recipe database",
-      "Creating an intuitive user interface for recipe browsing",
-      "Managing user-generated content and moderation",
-      "Optimizing Firebase queries for cost-effective scaling"
+      "Designing a simple UX for non-technical users",
+      "Real-time sync across parents and teachers",
+      "Ensuring message delivery and offline support",
+      "Granular roles and permissions for schools"
     ],
-    category: "Frontend",
+    category: "Mobile App",
     status: "Completed",
-    duration: "2.5 months",
-    teamSize: 1
-  },
+    duration: "3 months",
+    teamSize: 2
+  }
+  ,
   {
-    id: 5,
-    title: "Class Scheduling System",
-    description: "An interactive class scheduling application to organize and manage educational timetables efficiently.",
-    detailedDescription: "A sophisticated class scheduling system designed for educational institutions to manage complex timetabling requirements. The application handles multiple constraints including teacher availability, room capacity, subject requirements, and student conflicts. Built with React frontend and Spring Boot backend, it provides real-time scheduling updates, conflict detection, and automated optimization suggestions for efficient resource utilization.",
-    image: "/assets/class scheduling.png",
-    screenshots: [
-      "/assets/class scheduling.png",
-      "/assets/scheduling-calendar.png",
-      "/assets/scheduling-conflicts.png"
-    ],
-    technologies: ["React", "Spring Boot", "PostgreSQL", "REST API", "Material-UI", "JPA/Hibernate"],
+    id: 7,
+    title: "Geo‑Attendance (CRM)",
+    description: "Next‑generation attendance system with geofencing, offline sync, and real‑time dashboards.",
+    detailedDescription: "Geo‑Attendance is a CRM‑grade attendance platform that leverages geofencing and device sensors to ensure location‑verified check‑ins/outs. It supports team location coverage, shift rules, leave flows, and supervisor approvals with real‑time analytics dashboards.",
+    image: "/assets/attendance.png",
+    videoUrl: "https://www.youtube.com/embed/fXXSGMfI2rA",
+    documentUrl: "https://example.com/geo-attendance-doc.pdf",
+    screenshots: [],
+    technologies: ["Flutter", "Dart", "BLoC", "Clean Architecture", "SQLite/Room", "GPS/Geofencing", "REST API"],
     github: "#",
     demo: "#",
     features: [
-      "Interactive drag-and-drop scheduling interface",
-      "Real-time conflict detection and resolution suggestions",
-      "Multi-constraint optimization for resource allocation",
-      "Teacher and student availability management",
-      "Room capacity and equipment requirement tracking",
-      "Automated schedule generation with customizable parameters",
-      "Export functionality for various calendar formats",
-      "Role-based access control for administrators and teachers",
-      "Mobile-responsive design for on-the-go access"
+      "Geofenced, location‑verified attendance",
+      "Offline‑first capture with background sync",
+      "Shift rules, approvals, and leave workflows",
+      "Team heatmaps and coverage dashboards",
+      "Push notifications and reminders"
     ],
     challenges: [
-      "Implementing complex scheduling algorithms with multiple constraints",
-      "Creating an intuitive drag-and-drop interface for schedule management",
-      "Optimizing database queries for large-scale scheduling operations",
-      "Handling real-time updates across multiple user sessions",
-      "Designing efficient conflict detection and resolution mechanisms"
+      "Reliable geofence detection across devices",
+      "Battery‑friendly background location strategy",
+      "Secure tamper‑resistant check‑ins",
+      "Robust offline synchronization"
     ],
-    category: "Full Stack",
+    category: "Mobile App",
     status: "Completed",
     duration: "4 months",
-    teamSize: 2
+    teamSize: 3
   },
   {
-    id: 6,
-    title: "Employee Evaluation System",
-    description: "A comprehensive solution for managing employee performance reviews and feedback processes.",
-    detailedDescription: "An enterprise-grade employee evaluation system that streamlines the performance review process for organizations. The platform supports 360-degree feedback, goal setting and tracking, competency assessments, and automated report generation. Built with React and Spring Boot, it provides role-based dashboards for employees, managers, and HR personnel, ensuring a transparent and fair evaluation process while maintaining data security and privacy.",
-    image: "/assets/employe evaluation system.jpg",
-    screenshots: [
-      "/assets/employe evaluation system.jpg",
-      "/assets/evaluation-dashboard.png",
-      "/assets/evaluation-reports.png"
-    ],
-    technologies: ["React", "Spring Boot", "PostgreSQL", "REST API", "Chart.js", "Spring Security"],
+    id: 8,
+    title: "Kebar Restaurant App",
+    description: "Mobile restaurant app built with Flutter, powered by a Golang backend.",
+    detailedDescription: "Kebar Restaurant is a cross‑platform mobile application developed in Flutter with a Go (Golang) backend. It features menu browsing with high‑quality imagery, cart and checkout, order tracking, invoices/receipts, and push notifications. The backend exposes secure REST APIs with JWT auth and integrates with payment gateways.",
+    image: "/assets/kebar resturant.png",
+    videoUrl: "",
+    documentUrl: "",
+    screenshots: [],
+    technologies: ["Flutter", "Dart", "BLoC", "Clean Architecture", "REST API", "JWT", "Golang (Backend)", "PostgreSQL"],
     github: "#",
     demo: "#",
     features: [
-      "360-degree feedback system with peer, manager, and self-evaluations",
-      "Goal setting and progress tracking with milestone management",
-      "Competency-based assessment with customizable skill matrices",
-      "Automated report generation with visual analytics",
-      "Role-based dashboards for different user types",
-      "Email notifications for evaluation deadlines and reminders",
-      "Historical performance data and trend analysis",
-      "Secure document management for evaluation records",
-      "Integration with HR systems for employee data synchronization"
+      "Rich menu browsing with categories and search",
+      "Cart, checkout, and order tracking",
+      "Digital invoices/receipts",
+      "Push notifications for order status",
+      "Admin endpoints for menu and pricing",
+      "Responsive layouts for phones and tablets"
     ],
     challenges: [
-      "Designing a flexible evaluation framework for different job roles",
-      "Implementing secure multi-role authentication and authorization",
-      "Creating comprehensive reporting with meaningful analytics",
-      "Ensuring data privacy and compliance with HR regulations",
-      "Building scalable architecture for large enterprise deployments"
+      "Synchronizing cart and orders across devices",
+      "Payment integration and secure token handling",
+      "Optimizing image delivery and caching"
     ],
-    category: "Full Stack",
+    category: "Mobile App",
     status: "Completed",
-    duration: "5 months",
-    teamSize: 3
+    duration: "3 months",
+    teamSize: 2
   }
 ];
 

@@ -118,6 +118,23 @@ const ProjectDetail = ({ project, onClose, isVisible }) => {
             </div>
           </section>
 
+          {/* Demo Video */}
+          {project.videoUrl && (
+            <section className="project-section">
+              <h2>Demo Video</h2>
+              <div style={{ position: 'relative', paddingBottom: '56.25%', height: 0, overflow: 'hidden', borderRadius: 8, border: '1px solid var(--border-color)' }}>
+                <iframe
+                  title={`${project.title} demo video`}
+                  src={project.videoUrl}
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowFullScreen
+                  style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}
+                />
+              </div>
+            </section>
+          )}
+
           {/* Features */}
           <section className="project-section">
             <h2>Key Features</h2>

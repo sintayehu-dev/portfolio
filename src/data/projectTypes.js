@@ -12,13 +12,17 @@ export const ProjectPropTypes = PropTypes.shape({
   description: PropTypes.string.isRequired,
   detailedDescription: PropTypes.string.isRequired,
   image: PropTypes.string.isRequired,
+  // Optional YouTube or video URL for demo purposes
+  videoUrl: PropTypes.string,
+  // Optional documentation URL (PDF/drive link)
+  documentUrl: PropTypes.string,
   screenshots: PropTypes.arrayOf(PropTypes.string),
   technologies: PropTypes.arrayOf(PropTypes.string).isRequired,
   github: PropTypes.string.isRequired,
   demo: PropTypes.string.isRequired,
   features: PropTypes.arrayOf(PropTypes.string).isRequired,
   challenges: PropTypes.arrayOf(PropTypes.string).isRequired,
-  category: PropTypes.oneOf(['Frontend', 'Backend', 'Full Stack', 'Mobile', 'Desktop']).isRequired,
+  category: PropTypes.oneOf(['Frontend', 'Backend', 'Full Stack', 'Mobile', 'Mobile App', 'Desktop']).isRequired,
   status: PropTypes.oneOf(['In Progress', 'Completed', 'On Hold', 'Cancelled']).isRequired,
   duration: PropTypes.string.isRequired,
   teamSize: PropTypes.number.isRequired
