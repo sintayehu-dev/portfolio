@@ -14,7 +14,7 @@
 .welcome-title {
   font-size: 4rem;
   font-weight: 700;
-  margin-bottom: 0;
+  margin-bottom: 0.5rem;
   background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -23,10 +23,31 @@
   animation: wave 2s ease-in-out infinite;
 }
 
+.welcome-subtitle {
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: var(--text-color);
+  opacity: 0.8;
+  margin: 0;
+  font-family: var(--font-family);
+  animation: fadeInUp 1s ease-out 0.5s both;
+}
+
 @keyframes wave {
   0%, 100% { transform: rotate(0deg); }
   25% { transform: rotate(10deg); }
   75% { transform: rotate(-10deg); }
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 0.8;
+    transform: translateY(0);
+  }
 }
 
 /* Custom section title with icons */
@@ -301,6 +322,10 @@
     font-size: 3rem;
   }
   
+  .welcome-subtitle {
+    font-size: 1.2rem;
+  }
+  
   .welcome-section {
     margin-bottom: 3rem;
     padding: 1.5rem 0;
@@ -356,6 +381,10 @@
   
   .welcome-title {
     font-size: 2.5rem;
+  }
+  
+  .welcome-subtitle {
+    font-size: 1rem;
   }
   
   .welcome-section {

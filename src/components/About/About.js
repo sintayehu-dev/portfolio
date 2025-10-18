@@ -15,6 +15,7 @@ const About = () => {
         {/* Welcome Message */}
         <div className="welcome-section hidden" data-animation="animate-fade-up" data-delay="delay-100">
           <h1 className="welcome-title">Hello! 👋</h1>
+          <p className="welcome-subtitle">Welcome to my portfolio site</p>
         </div>
 
         <div className="about-content">
