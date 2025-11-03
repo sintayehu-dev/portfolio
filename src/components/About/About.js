@@ -30,8 +30,7 @@ const About = () => {
             </p>
             
             <p className="about-vision">
-              Proficient in Agile development practices, cloud deployment, and delivering scalable, user-centric mobile solutions that meet business goals and enhance user experience. Expert in mobile development with Flutter, implementing DDD (Domain-Driven Design) architecture, BLoC state management, and feature-first approach for building robust cross-platform mobile applications. Specialized in secure transaction processing, real-time data synchronization, and comprehensive mobile platforms that deliver exceptional user experiences across Android and iOS devices.
-            </p>
+            Proficient in Agile development practices and dedicated to delivering high-performance, user-centric mobile applications that align with business goals and enhance user experience. Expert in Flutter development, applying Domain-Driven Design (DDD), BLoC state management, and a feature-first approach to build robust, maintainable cross-platform apps. Experienced in integrating secure payment systems, enabling real-time data synchronization, and crafting smooth, consistent experiences across Android and iOS devices.</p>
 
             <div className="about-highlights">
               <div className="highlight-item">
