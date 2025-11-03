@@ -24,11 +24,34 @@ const Contact = () => {
     setIsSubmitting(true);
     setSubmitStatus('');
 
-    // Simulate form submission
+    const formspreeId = process.env.REACT_APP_FORMSPREE_FORM_ID;
+    if (!formspreeId) {
+      setSubmitStatus('error');
+      setIsSubmitting(false);
+      return;
+    }
+
     try {
-      await new Promise(resolve => setTimeout(resolve, 2000));
-      setSubmitStatus('success');
-      setFormData({ name: '', email: '', subject: '', message: '' });
+      const response = await fetch(`https://formspree.io/f/${formspreeId}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          subject: formData.subject,
+          message: formData.message
+        })
+      });
+
+      if (response.ok) {
+        setSubmitStatus('success');
+        setFormData({ name: '', email: '', subject: '', message: '' });
+      } else {
+        setSubmitStatus('error');
+      }
     } catch (error) {
       setSubmitStatus('error');
     } finally {
@@ -130,10 +153,9 @@ const Contact = () => {
 
               {submitStatus && (
                 <div className={`submit-status ${submitStatus}`}>
-                  {submitStatus === 'success' 
-                    ? 'Message sent successfully! I\'ll get back to you soon.' 
-                    : 'Failed to send message. Please try again.'
-                  }
+                  {submitStatus === 'success'
+                    ? 'Message sent successfully! I\'ll get back to you soon.'
+                    : 'Failed to send message. Please try again or check form setup.'}
                 </div>
               )}
             </form>

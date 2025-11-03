@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import './Footer.css';
 import { FaGithub, FaFacebook, FaInstagram, FaLinkedin, FaEnvelope, FaArrowUp, FaPhone, FaMapMarkerAlt } from 'react-icons/fa';
+import { useToast } from '../../contexts/ToastContext';
 
 const Footer = () => {
   const [showScrollTop, setShowScrollTop] = useState(false);
+  const { showToast } = useToast();
   
   useEffect(() => {
     const handleScroll = () => {
@@ -44,7 +46,15 @@ const Footer = () => {
               <p>Building digital experiences that inspire</p>
               
               <div className="social-links">
-                <a href="https://github.com/sintayehu-dev" target="_blank" rel="noopener noreferrer"><FaGithub /></a>
+                <a 
+                  href="https://github.com/sintayehu-dev" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    showToast("Contact me if you want to github link url");
+                  }}
+                ><FaGithub /></a>
                 <a href="https://www.facebook.com/profile.php?id=100035202185891" target="_blank" rel="noopener noreferrer"><FaFacebook /></a>
                 <a href="https://www.instagram.com/jo_sinte/" target="_blank" rel="noopener noreferrer"><FaInstagram /></a>
                 <a href="http://linkedin.com/in/sintayehu-belfa" target="_blank" rel="noopener noreferrer"><FaLinkedin /></a>

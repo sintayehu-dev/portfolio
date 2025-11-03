@@ -246,12 +246,26 @@ const projects = [
       "Digital invoices/receipts and order history",
       "Push notifications for order status and ready‑for‑pickup",
       "Admin endpoints for menu, pricing, promos, and availability windows",
-      "Responsive layouts for phones and tablets with image caching"
+      "Responsive layouts for phones and tablets with image caching",
+      "Loyalty points, promo codes, and discounts at checkout",
+      "Pickup/delivery scheduling with time windows and capacity limits",
+      "Address validation, delivery zones, and fee rules",
+      "Real‑time order status via WebSocket/FCM updates",
+      "Retryable payments and idempotent order submission",
+      "Offline cart persistence and session restore",
+      "Accessibility: larger touch targets, screen reader labels, color contrast",
+      "Operational dashboards for order queue, kitchen view, and throttling"
     ],
     challenges: [
       "Synchronizing cart and orders across devices — solved with server‑side sessions",
       "Payment integration and secure token handling — solved with PCI‑aware flows and tokenization",
-      "Optimizing image delivery and caching — solved with responsive sizes and CDN"
+      "Optimizing image delivery and caching — solved with responsive sizes and CDN",
+      "Peak‑hour load and order bursts — solved with throttling, queues, and backpressure",
+      "Flaky networks and mobile disruptions — solved with retries, timeouts, and idempotency keys",
+      "Menu changes and stock concurrency — solved with versioned menus and optimistic validation",
+      "Taxes, tips, and rounding across regions — solved with deterministic pricing engine",
+      "Push delivery reliability — solved with topic routing, retries, and fallbacks",
+      "Privacy and secure storage — solved with encrypted tokens and scoped permissions"
     ],
     category: "Mobile App",
     status: "Completed",

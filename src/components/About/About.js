@@ -22,11 +22,11 @@ const About = () => {
           <div className="about-text hidden" data-animation="animate-from-left" data-delay="delay-200">
             <p className="about-intro">
               <strong>SINTAYEHU BELFA</strong><br/>
-              Flutter Mobile Application Developer | Android & iOS Cross-Platform Expert | Spring Boot Backend Engineer
+              Flutter Mobile Application Developer | Android & iOS Cross-Platform Expert
             </p>
             
             <p className="about-focus">
-              Mobile Application Developer specializing in building high-performance Android & iOS apps using Flutter and architecting scalable backend services with Spring Boot. Skilled in designing clean, maintainable code, integrating secure APIs, and optimizing app performance for enterprise-grade solutions. Experienced in deploying apps to both Play Store and App Store, implementing CI/CD pipelines, integrating third-party APIs, and working with real-time data synchronization.
+              Mobile Application Developer specializing in building high-performance Android & iOS apps using Flutter. Skilled in designing clean, maintainable code with Dart, integrating secure REST/GraphQL APIs and Firebase/Supabase backends, and optimizing app performance for enterprise-grade solutions. Experienced in deploying apps to both Play Store and App Store, implementing CI/CD pipelines, integrating third-party services, and working with real-time data synchronization.
             </p>
             
             <p className="about-vision">
@@ -44,7 +44,7 @@ const About = () => {
               </div>
               <div className="highlight-item">
                 <span className="highlight-icon">⚙️</span>
-                <span className="highlight-text">Spring Boot Backend</span>
+                <span className="highlight-text">Flutter & Dart</span>
               </div>
               <div className="highlight-item">
                 <span className="highlight-icon">🏗️</span>

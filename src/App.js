@@ -9,6 +9,7 @@ import Projects from './pages/Projects';
 import Contact from './pages/Contact';
 import ProjectDetailPage from './pages/ProjectDetail';
 import NotFound from './pages/NotFound';
+import { ToastProvider } from './contexts/ToastContext';
 import { initScrollAnimation, triggerAnimations } from './utils/scrollAnimation';
 
 // Component to handle route changes and scroll animations
@@ -56,13 +57,15 @@ function App() {
 
   return (
     <Router>
-      <div className="App">
-        {isLoading ? (
-          <Preloader />
-        ) : (
-          <AppContent />
-        )}
-      </div>
+      <ToastProvider>
+        <div className="App">
+          {isLoading ? (
+            <Preloader />
+          ) : (
+            <AppContent />
+          )}
+        </div>
+      </ToastProvider>
     </Router>
   );
 }

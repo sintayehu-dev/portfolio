@@ -2,10 +2,12 @@ import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router-dom';
 import { ProjectDetailPropTypes } from '../../data/projectTypes';
+import { useToast } from '../../contexts/ToastContext';
 import './ProjectDetail.css';
 
 const ProjectDetail = ({ project, onClose, isVisible }) => {
   const navigate = useNavigate();
+  const { showToast } = useToast();
   // Handle escape key press to close modal
   useEffect(() => {
     const handleEscapeKey = (event) => {
@@ -87,12 +89,6 @@ const ProjectDetail = ({ project, onClose, isVisible }) => {
             <h1 id="project-title" className="project-detail-title">
               {project.title}
             </h1>
-            <div className="project-detail-meta">
-              <span className="project-category">{project.category}</span>
-              <span className="project-status">{project.status}</span>
-              <span className="project-duration">{project.duration}</span>
-              <span className="project-team">Team: {project.teamSize}</span>
-            </div>
           </div>
         </div>
 
@@ -188,6 +184,10 @@ const ProjectDetail = ({ project, onClose, isVisible }) => {
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="project-action-btn github-btn"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    showToast("Contact me if you want to github link url");
+                  }}
                 >
                   <span>View Code</span>
                 </a>

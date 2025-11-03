@@ -3,10 +3,12 @@ import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router-dom';
 import './ProjectsGrid.css';
 import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa';
+import { useToast } from '../../contexts/ToastContext';
 import projects from '../../data/projects';
 
 const ProjectsGrid = ({ onProjectSelect }) => {
   const navigate = useNavigate();
+  const { showToast } = useToast();
   
   const handleProjectClick = (project) => {
     if (onProjectSelect) {
@@ -54,7 +56,11 @@ const ProjectsGrid = ({ onProjectSelect }) => {
                       <a 
                         href={project.github} 
                         className="project-link"
-                        onClick={(e) => e.stopPropagation()}
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          e.preventDefault();
+                          showToast("Contact me if you want to github link url");
+                        }}
                         aria-label={`View ${project.title} on GitHub`}
                       >
                         <FaGithub />
@@ -62,8 +68,12 @@ const ProjectsGrid = ({ onProjectSelect }) => {
                       <a 
                         href={project.demo} 
                         className="project-link"
-                        onClick={(e) => e.stopPropagation()}
-                        aria-label={`View ${project.title} live demo`}
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          e.preventDefault();
+                          showToast("Contact me to get the APK");
+                        }}
+                        aria-label={`Contact to get APK for ${project.title}`}
                       >
                         <FaExternalLinkAlt />
                       </a>
