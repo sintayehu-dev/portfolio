@@ -1,20 +1,25 @@
 import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import ProjectDetail from '../components/ProjectDetail/ProjectDetail';
-import projects from '../data/projects';
+import { useProjectDetail } from '../hooks/useProjectDetail';
+import Loader from '../components/Loader/Loader';
 
 const ProjectDetailPage = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-  
-  // Find the project by ID (convert string to number)
-  const project = projects.find(p => p.id === parseInt(id));
+  const { project, loading, error } = useProjectDetail(id);
   
   const handleClose = () => {
     navigate('/projects');
   };
 
-  if (!project) {
+  // Loading state
+  if (loading) {
+    return <Loader fullScreen={true} />;
+  }
+
+  // Error or not found state
+  if (error || !project) {
     return (
       <div className="project-not-found" style={{
         minHeight: '100vh',
@@ -34,10 +39,10 @@ const ProjectDetailPage = () => {
           boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)'
         }}>
           <h1 style={{ fontSize: '2.5rem', margin: '0 0 1rem 0', color: 'var(--primary-color)' }}>
-            Project Not Found
+            {error ? 'Error Loading Project' : 'Project Not Found'}
           </h1>
           <p style={{ fontSize: '1.1rem', margin: '0 0 2rem 0', opacity: 0.8 }}>
-            The project you're looking for doesn't exist.
+            {error || "The project you're looking for doesn't exist."}
           </p>
           <button 
             onClick={() => navigate('/projects')}

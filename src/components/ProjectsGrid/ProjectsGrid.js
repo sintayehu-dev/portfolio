@@ -4,11 +4,13 @@ import { useNavigate } from 'react-router-dom';
 import './ProjectsGrid.css';
 import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa';
 import { useToast } from '../../contexts/ToastContext';
-import projects from '../../data/projects';
+import { useProjects } from '../../hooks/useProjects';
+import Loader from '../Loader/Loader';
 
 const ProjectsGrid = ({ onProjectSelect }) => {
   const navigate = useNavigate();
   const { showToast } = useToast();
+  const { projects, loading, error } = useProjects();
   
   const handleProjectClick = (project) => {
     if (onProjectSelect) {
@@ -18,6 +20,56 @@ const ProjectsGrid = ({ onProjectSelect }) => {
       navigate(`/project/${project.id}`);
     }
   };
+
+  // Loading state
+  if (loading) {
+    return (
+      <section id="projects" className="section">
+        <div className="container">
+          <Loader />
+        </div>
+      </section>
+    );
+  }
+
+  // Error state (no projects available)
+  if (error && projects.length === 0) {
+    return (
+      <section id="projects" className="section">
+        <div className="container">
+          <div className="section-title-custom">
+            <h2 style={{ textAlign: 'center', fontSize: '2rem', color: 'var(--primary-color)', marginBottom: '1rem' }}>
+              Unable to Load Projects
+            </h2>
+            <p style={{ textAlign: 'center', fontSize: '1.1rem', color: 'var(--error-color, #ff4444)', maxWidth: '600px', margin: '0 auto' }}>
+              {error}
+            </p>
+            <p style={{ textAlign: 'center', fontSize: '0.9rem', color: 'var(--text-muted, #888)', marginTop: '1rem' }}>
+              Please check your Contentful configuration or try again later.
+            </p>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  // No projects found
+  if (!loading && projects.length === 0) {
+    return (
+      <section id="projects" className="section">
+        <div className="container">
+          <div className="section-title-custom">
+            <h2 style={{ textAlign: 'center', fontSize: '2rem', color: 'var(--primary-color)', marginBottom: '1rem' }}>
+              No Projects Found
+            </h2>
+            <p style={{ textAlign: 'center', fontSize: '1.1rem', color: 'var(--text-color)', opacity: 0.8 }}>
+              No projects have been added to Contentful yet.
+            </p>
+          </div>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section id="projects" className="section">
