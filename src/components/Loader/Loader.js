@@ -1,34 +1,25 @@
 /**
- * Modern Loading Component
- * Sleek, animated loader for better UX
+ * Loader Component
+ * Internal loading animation for projects and content loading states
+ * Features: Spinning rings with smooth animations
  */
 
-import React from 'react';
 import './Loader.css';
 
-const Loader = ({ fullScreen = false }) => {
-  const containerStyle = fullScreen ? {
-    minHeight: '100vh',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    background: 'var(--bg-color)'
-  } : {
-    minHeight: '60vh',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center'
-  };
-
+const Loader = ({ fullScreen = false, message = '' }) => {
   return (
-    <div style={containerStyle}>
+    <div className={`loader-wrapper ${fullScreen ? 'fullscreen' : 'inline'}`}>
       <div className="loader-container">
-        <div className="loader">
-          <div className="loader-circle"></div>
-          <div className="loader-circle"></div>
-          <div className="loader-circle"></div>
-          <div className="loader-circle"></div>
+        <div className="modern-loader">
+          <div className="loader-ring"></div>
+          <div className="loader-ring"></div>
+          <div className="loader-ring"></div>
+          <div className="loader-dot"></div>
         </div>
+
+        {message && (
+          <div className="loader-message">{message}</div>
+        )}
       </div>
     </div>
   );

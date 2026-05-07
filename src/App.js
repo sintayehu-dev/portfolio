@@ -18,6 +18,9 @@ function AppContent() {
   const location = useLocation();
 
   useEffect(() => {
+    // Scroll to top on route change
+    window.scrollTo(0, 0);
+
     // Reinitialize scroll animations on route change
     const cleanup = initScrollAnimation();
     

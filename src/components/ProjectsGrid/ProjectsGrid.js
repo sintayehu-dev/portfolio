@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router-dom';
 import './ProjectsGrid.css';
@@ -12,6 +12,27 @@ const ProjectsGrid = ({ onProjectSelect }) => {
   const { showToast } = useToast();
   const { projects, loading, error } = useProjects();
   
+  // Scroll to top and trigger animations when component mounts
+  useEffect(() => {
+    window.scrollTo(0, 0);
+
+    // Trigger animations after a short delay to ensure DOM is ready
+    const timer = setTimeout(() => {
+      const hiddenElements = document.querySelectorAll('.hidden');
+      hiddenElements.forEach(element => {
+        element.classList.remove('hidden');
+        if (element.dataset.animation) {
+          element.classList.add(element.dataset.animation);
+        }
+        if (element.dataset.delay) {
+          element.classList.add(element.dataset.delay);
+        }
+      });
+    }, 50);
+
+    return () => clearTimeout(timer);
+  }, [projects]); // Re-run when projects load
+
   const handleProjectClick = (project) => {
     if (onProjectSelect) {
       onProjectSelect(project);
@@ -21,15 +42,9 @@ const ProjectsGrid = ({ onProjectSelect }) => {
     }
   };
 
-  // Loading state
+  // Loading state - centered circular loader
   if (loading) {
-    return (
-      <section id="projects" className="section">
-        <div className="container">
-          <Loader />
-        </div>
-      </section>
-    );
+    return <Loader fullScreen={true} />;
   }
 
   // Error state (no projects available)
@@ -106,24 +121,38 @@ const ProjectsGrid = ({ onProjectSelect }) => {
                   <div className="project-overlay">
                     <div className="project-actions">
                       <a 
-                        href={project.github} 
+                        href={project.github && project.github !== '#' ? project.github : undefined}
+                        target={project.github && project.github !== '#' ? '_blank' : undefined}
+                        rel={project.github && project.github !== '#' ? 'noopener noreferrer' : undefined}
                         className="project-link"
                         onClick={(e) => {
                           e.stopPropagation();
-                          e.preventDefault();
-                          showToast("Contact me if you want to github link url");
+                          // If GitHub link is valid (not #), let it open
+                          if (project.github && project.github !== '#') {
+                            // Link will open normally via href
+                          } else {
+                            e.preventDefault();
+                            showToast("Contact me if you want to github link url");
+                          }
                         }}
                         aria-label={`View ${project.title} on GitHub`}
                       >
                         <FaGithub />
                       </a>
                       <a 
-                        href={project.demo} 
+                        href={project.demo && project.demo !== '#' ? project.demo : undefined}
+                        target={project.demo && project.demo !== '#' ? '_blank' : undefined}
+                        rel={project.demo && project.demo !== '#' ? 'noopener noreferrer' : undefined}
                         className="project-link"
                         onClick={(e) => {
                           e.stopPropagation();
-                          e.preventDefault();
-                          showToast("Contact me to get the APK");
+                          // If demo link is valid (not #), let it open
+                          if (project.demo && project.demo !== '#') {
+                            // Link will open normally via href
+                          } else {
+                            e.preventDefault();
+                            showToast("Contact me to get the APK");
+                          }
                         }}
                         aria-label={`Contact to get APK for ${project.title}`}
                       >

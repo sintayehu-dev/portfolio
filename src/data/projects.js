@@ -1,277 +1,33 @@
 /**
- * Enhanced project data structure with detailed information
- * Includes extended fields for comprehensive project showcase
+ * Project data structure
+ * 
+ * NOTE: This file is kept for reference only.
+ * All project data is now fetched from Contentful CMS.
+ * 
+ * To add/edit projects, use the Contentful dashboard:
+ * https://app.contentful.com
+ * 
+ * Project structure in Contentful:
+ * - title: Text
+ * - description: Text
+ * - detailedDescription: Long Text
+ * - image: Media
+ * - screenshots: Media (multiple)
+ * - technologies: Tags
+ * - github: Text
+ * - demo: Text
+ * - features: Long Text (JSON array)
+ * - challenges: Long Text (JSON array)
+ * - solutions: Long Text (JSON array)
+ * - category: Text
+ * - status: Text
+ * - duration: Text
+ * - teamSize: Number
+ * - videoUrl: Text (optional)
+ * - documentUrl: Text (optional)
  */
 
-const projects = [
-  {
-    id: 1,
-    title: "Goh Betoch Banking Platform",
-    description: "A modern cross-platform mobile banking application built for both Android and iOS using Flutter, with secure transfer capabilities and comprehensive financial services.",
-    detailedDescription: "A comprehensive cross-platform mobile banking platform designed for Goh Betoch Bank, where I developed both Android and iOS applications using Flutter with clean architecture and modern development practices. As a cross-platform expert, I built a single codebase that delivers native performance on both platforms. The application features secure money transfers, account management, and mortgage services with a seamless user experience across Android and iOS devices. Implemented using DDD (Domain-Driven Design) architecture, Clean Code principles, BLoC state management, and feature-first approach for scalable and maintainable codebase. The mobile app integrates with a robust Golang backend for real-time transaction processing, push notifications, and secure financial operations.",
-    image: "/assets/goh bet.png",
-    screenshots: [
-      "/assets/goh bet.png",
-      "/assets/goh bet1.png",
-      "/assets/goh bet2.png",
-      "/assets/goh bet3.png",
-      "/assets/goh bet4.png",
-      "/assets/goh bet5.png",
-      "/assets/goh bet6.png"
-    ],
-    technologies: ["Flutter", "Dart", "BLoC", "Clean Architecture", "DDD", "Dio", "Firebase", "Push Notifications", "REST API", "JWT", "Golang (Backend)", "PostgreSQL"],
-    github: "#",
-    demo: "#",
-    features: [
-      "Cross-platform expert: Built both Android and iOS applications",
-      "Single Flutter codebase delivering native performance on both platforms",
-      "Developed frontend mobile application using Flutter",
-      "DDD (Domain-Driven Design) architecture for scalable codebase",
-      "Clean Code principles and SOLID design patterns",
-      "BLoC state management for reactive UI updates",
-      "Feature-first approach for modular development",
-      "Dio HTTP client for robust API communication with Golang backend",
-      "Firebase push notifications for real-time alerts",
-      "Secure money transfers with end-to-end encryption",
-      "Digital wallet integration with card management",
-      "Real-time transaction processing and confirmation",
-      "Mortgage loan application and management system",
-      "Comprehensive transaction history and reporting",
-      "Multi-factor authentication for enhanced security",
-      "Offline transaction queuing for poor connectivity",
-      "Biometric authentication support",
-      "Multi-language support for diverse user base"
-    ],
-    challenges: [
-      "Cross-platform development: Ensuring consistent UX across Android and iOS",
-      "Implementing DDD architecture in Flutter for complex banking domain",
-      "Managing state across multiple features using BLoC pattern",
-      "Designing intuitive mobile UI for complex banking operations",
-      "Integrating Flutter frontend with Golang backend APIs",
-      "Implementing secure financial transactions with PCI compliance",
-      "Creating real-time synchronization across multiple banking systems",
-      "Ensuring data security and fraud prevention mechanisms",
-      "Optimizing Flutter app performance for low-end mobile devices",
-      "Implementing clean architecture with proper separation of concerns",
-      "Managing complex business logic with feature-first approach",
-      "Handling offline scenarios and data synchronization with backend",
-      "Platform-specific optimizations for Android and iOS native features"
-    ],
-    category: "Mobile App",
-    status: "Completed",
-    duration: "6 months",
-    teamSize: 4
-  },
-  {
-    id: 3,
-    title: "E‑learning Platform – Interactive Simulations",
-    description: "Mobile platform for interactive STEM simulations and concept visualizations with advanced physics engines and real-time parameter manipulation.",
-    detailedDescription: "A production‑grade E‑learning platform focused on interactive STEM simulations that revolutionizes how students learn complex scientific concepts. Built in Flutter using a feature‑first architecture with Riverpod for reactive state management, it allows learners to tune parameters (e.g., velocity, mass, resistance, temperature, pressure) and see outcomes update in real time with high‑FPS rendering using custom physics engines. The system supports comprehensive lesson modules with adaptive learning paths, detailed progress tracking with analytics, and robust offline session persistence so learners can resume where they left off even without internet connectivity. Advanced features include 3D molecular visualizations, interactive circuit simulators, and mathematical function graphing with real-time manipulation. On the server side, a Golang backend provides secure REST endpoints for content delivery, user profiles, achievements, telemetry, and AI-powered learning recommendations. Simulations are modeled with a plug‑in interface, enabling educators to add new lessons without changing core code. The UI is optimized for phones and tablets with responsive layouts, accessible controls (gestures, larger touch targets), and robust error handling to gracefully degrade on lower‑end devices.",
-    image: "/assets/Elearning.png",
-    videoUrl: "https://www.youtube.com/embed/gnvf9yXHB1o",
-    documentUrl: "https://example.com/e-learning-platform-doc.pdf",
-    screenshots: [],
-    technologies: ["Flutter", "Dart", "Riverpod", "Clean Architecture", "Custom Physics Engine", "3D Rendering", "REST API", "Golang (Backend)", "SQLite", "AI/ML Integration"],
-    github: "#",
-    demo: "#",
-    features: [
-      "Interactive, parameter‑driven simulations with real‑time updates using CustomPainter/Canvas and isolates for smooth 60fps rendering",
-      "Advanced concept visualizations with 3D molecular models, interactive circuit simulators, and mathematical function graphing",
-      "Comprehensive progress tracking with detailed analytics, learning path recommendations, and performance insights",
-      "Robust offline session persistence using SQLite with conflict resolution and seamless sync when connectivity returns",
-      "Extensible authoring model allowing educators to add new simulations via plug‑in interface without code changes",
-      "Adaptive learning algorithms that adjust difficulty based on student performance and learning patterns",
-      "Multi-modal learning support including visual, auditory, and kinesthetic learning styles",
-      "Real-time collaboration features allowing students to work together on complex simulations",
-      "Advanced accessibility features with screen reader support, voice commands, and customizable UI scaling",
-      "Comprehensive assessment tools with automated grading and detailed feedback mechanisms",
-      "Integration with learning management systems (LMS) for seamless classroom integration",
-      "Advanced physics engines supporting mechanics, thermodynamics, electromagnetism, and quantum physics simulations",
-      "Responsive and accessible UI optimized for phones, tablets, and desktop with gesture controls and larger touch targets"
-    ],
-    challenges: [
-      "Rendering performance for complex 3D visuals and physics calculations — solved with RepaintBoundary, custom caching strategies, selective rebuilds, and isolate-based computation",
-      "Designing an extensible simulation model that supports diverse STEM subjects — solved with plug‑in contracts, versioned schemas, and a flexible physics engine architecture",
-      "Managing complex state across multiple simulation parameters — solved with Riverpod providers for reactive state management and efficient UI updates",
-      "Accessible controls and gestures for complex scientific interactions — solved with comprehensive semantics, focus management, adaptive layouts, and voice control integration",
-      "Offline functionality for resource-intensive simulations — solved with intelligent caching, progressive loading, and background sync with conflict resolution",
-      "Cross-platform performance optimization — solved with platform-specific rendering optimizations and adaptive quality settings",
-      "Real-time collaboration without performance degradation — solved with efficient state synchronization and conflict resolution algorithms",
-      "Integration with diverse educational systems — solved with standardized APIs and flexible data exchange protocols"
-    ],
-    solutions: [
-      "Implemented custom physics engines using Dart isolates to prevent UI blocking during complex calculations",
-      "Created a modular architecture with Riverpod providers for each simulation type, enabling easy extension and maintenance",
-      "Developed intelligent caching system that preloads simulation assets and maintains offline functionality",
-      "Built comprehensive accessibility framework with screen reader integration and customizable interaction methods",
-      "Designed adaptive rendering system that adjusts quality based on device capabilities and battery level",
-      "Implemented real-time collaboration using WebSocket connections with efficient state synchronization",
-      "Created plug-in system allowing educators to add custom simulations without modifying core application code",
-      "Developed AI-powered learning analytics that provide personalized recommendations and track learning outcomes"
-    ],
-    category: "Mobile App",
-    status: "Completed",
-    duration: "4 months",
-    teamSize: 3
-  },
-  {
-    id: 2,
-    title: "Communication Book App (CRM)",
-    description: "Comprehensive Teacher–Parent Communication Platform with advanced features for seamless educational collaboration and student progress tracking.",
-    detailedDescription: "A sophisticated mobile‑first communication platform that revolutionizes how teachers and parents connect and collaborate on student education. Built in Flutter with Riverpod for reactive state management and a feature‑first architecture, this comprehensive CRM system supports school‑wide announcements with targeted messaging, detailed class streams with multimedia content, automated attendance capture with biometric verification, comprehensive behaviour reports with categories, photo evidence, and detailed audit trails, advanced homework distribution with progress tracking, and real-time read receipts with delivery confirmation. The platform features two‑way messaging with rich media support, direct teacher‑parent video calls, push notifications with smart quiet‑hours controls, and emergency alert systems. Advanced role-based access control (admin/teacher/parent/student) provides granular permissions for classes, students, and actions. The system includes comprehensive data analytics, automated report generation, and integration with school management systems. Data syncs via Firebase/REST with intelligent offline caching ensuring critical actions work without connectivity and reconcile seamlessly when connection returns. The result is dramatically improved parent engagement, reduced communication gaps, and measurable improvements in student outcomes across multiple schools.",
-    image: "/assets/comunication.png",
-    // YouTube embed URL for the provided video
-    videoUrl: "https://www.youtube.com/embed/KwnRgls2BzY",
-    documentUrl: "https://example.com/communication-book-app-doc.pdf",
-    screenshots: [],
-    technologies: ["Flutter", "Dart", "Riverpod", "Clean Architecture", "Firebase", "REST API", "WebRTC", "Biometric Auth", "Push Notifications", "SQLite", "Analytics"],
-    github: "#",
-    demo: "#",
-    features: [
-      "Advanced announcements system with read receipts, segmented audiences, and priority levels",
-      "Comprehensive attendance capture with biometric verification, offline queueing, and automatic conflict resolution",
-      "Detailed behaviour reports with customizable categories, photo evidence, video recordings, and comprehensive audit trails",
-      "Smart homework management with progress tracking, automated reminders, due‑date calendars, and plagiarism detection",
-      "Rich messaging system with direct teacher–parent chats, video calls, file sharing, and push notifications with quiet hours",
-      "Multi‑school and multi‑class role management with granular permissions and access control",
-      "Real-time collaboration tools including shared whiteboards, document editing, and group discussions",
-      "Advanced analytics dashboard with student performance insights, engagement metrics, and predictive analytics",
-      "Emergency alert system with instant notifications, location tracking, and automated parent contact",
-      "Integration with school management systems, learning management platforms, and third-party educational tools",
-      "Comprehensive reporting system with automated report generation and customizable templates",
-      "Multi-language support with real-time translation capabilities",
-      "Accessibility features including screen reader support, voice commands, and customizable UI scaling",
-      "Advanced security features with end-to-end encryption, data privacy compliance, and secure file storage"
-    ],
-    challenges: [
-      "Designing intuitive UX for diverse user groups (teachers, parents, administrators) — solved via extensive usability testing, user journey mapping, and guided onboarding flows",
-      "Real‑time synchronization across multiple users and devices — solved with Firebase listeners, delta updates, and conflict resolution algorithms",
-      "Ensuring reliable message delivery and comprehensive offline support — solved with retry/backoff mechanisms, local SQLite caching, and intelligent sync strategies",
-      "Implementing granular roles and permissions for complex school hierarchies — solved with role‑based access control and dynamic permission management",
-      "Managing large-scale data synchronization and performance optimization — solved with pagination, lazy loading, and efficient data structures",
-      "Integrating multiple third-party systems and APIs — solved with standardized interfaces and robust error handling",
-      "Ensuring data privacy and security compliance — solved with end-to-end encryption and comprehensive audit trails",
-      "Handling multimedia content and file management — solved with cloud storage integration and intelligent caching strategies"
-    ],
-    solutions: [
-      "Implemented Riverpod providers for reactive state management, ensuring consistent UI updates across all features",
-      "Created comprehensive offline-first architecture with SQLite local storage and intelligent sync mechanisms",
-      "Developed role-based access control system with dynamic permissions and hierarchical user management",
-      "Built advanced analytics engine with real-time data processing and predictive insights",
-      "Implemented WebRTC for high-quality video calls with fallback to traditional messaging",
-      "Created automated testing framework ensuring reliability across different devices and network conditions",
-      "Developed comprehensive security framework with encryption, authentication, and privacy compliance",
-      "Built scalable backend architecture supporting thousands of concurrent users and real-time updates",
-      "Implemented intelligent notification system with user preference management and quiet hours",
-      "Created flexible integration framework supporting various school management and educational systems"
-    ],
-    category: "Mobile App",
-    status: "Completed",
-    duration: "5 months",
-    teamSize: 4
-  }
-  ,
-  {
-    id: 7,
-    title: "Geo‑Attendance (CRM)",
-    description: "Advanced location‑verified attendance system with AI-powered fraud detection, comprehensive analytics, and enterprise-grade security features.",
-    detailedDescription: "A sophisticated location‑verified attendance platform engineered for enterprise field teams and remote workforce management. Built with Flutter using Riverpod for reactive state management and a feature‑first architecture, it leverages advanced device GPS, multiple geofencing technologies, motion sensors, and AI-powered fraud detection to validate on‑site check‑ins/outs while maintaining optimal battery performance. The system enforces complex shift rules, break windows, overtime calculations, and comprehensive leave workflows with automated approval processes. Supervisors can review exceptions, approve requests, and manage teams through an intuitive dashboard. Data is captured offline with intelligent background sync ensuring 100% reliability in low‑connectivity areas. Advanced dashboards provide real‑time coverage maps, predictive analytics, lateness trends, productivity insights, and comprehensive exportable reports. The platform includes facial recognition, biometric verification, and advanced security features. On the backend, secure REST services persist events, apply complex geofence rules, and prevent spoofing through multi-layered tamper detection, device integrity signals, and machine learning algorithms that identify suspicious patterns.",
-    image: "/assets/attendance.png",
-    videoUrl: "https://www.youtube.com/embed/fXXSGMfI2rA",
-    documentUrl: "https://example.com/geo-attendance-doc.pdf",
-    screenshots: [],
-    technologies: ["Flutter", "Dart", "Riverpod", "Clean Architecture", "SQLite", "GPS/Geofencing", "REST API", "AI/ML", "Biometric Auth", "Facial Recognition", "WebRTC", "Analytics"],
-    github: "#",
-    demo: "#",
-    features: [
-      "Advanced geofenced, location‑verified attendance with multi-layered spoof‑prevention including mock‑location detection, GPS jitter analysis, and AI-powered fraud detection",
-      "Comprehensive offline‑first capture with intelligent background sync, conflict resolution, and data integrity validation",
-      "Sophisticated shift management with automated rules, approvals, leave workflows, overtime calculations, and exception handling",
-      "Advanced team analytics including heatmaps, coverage dashboards, productivity insights, and comprehensive exportable reports",
-      "Smart push notifications and reminders for late/forgotten check‑ins with customizable escalation policies",
-      "Biometric verification including facial recognition, fingerprint scanning, and voice authentication",
-      "Real-time supervisor dashboard with live team tracking, exception alerts, and instant approval workflows",
-      "Advanced reporting system with predictive analytics, trend analysis, and automated compliance reporting",
-      "Integration with payroll systems, HR platforms, and enterprise resource planning (ERP) systems",
-      "Multi-site management supporting complex organizational hierarchies and cross-location assignments",
-      "Advanced security features including end-to-end encryption, audit trails, and compliance with labor regulations",
-      "AI-powered insights for workforce optimization, attendance pattern analysis, and predictive scheduling",
-      "Comprehensive mobile and web interfaces with responsive design and accessibility features",
-      "Emergency response system with panic buttons, location sharing, and automated alert escalation"
-    ],
-    challenges: [
-      "Achieving reliable geofence detection across diverse devices and environments — solved with fused location providers, adaptive tolerance buffers, and machine learning-based location validation",
-      "Optimizing battery consumption for continuous location tracking — solved with intelligent batching, adaptive polling intervals, and device-specific optimization strategies",
-      "Implementing secure, tamper‑resistant check‑in systems — solved with multi-layered device integrity checks, server-side validation, and AI-powered anomaly detection",
-      "Ensuring robust offline synchronization with data consistency — solved with idempotent endpoints, sophisticated merge rules, and conflict resolution algorithms",
-      "Managing complex organizational hierarchies and permission systems — solved with role-based access control and dynamic permission management",
-      "Integrating with diverse enterprise systems and APIs — solved with standardized interfaces and comprehensive error handling",
-      "Ensuring compliance with labor regulations and privacy laws — solved with comprehensive audit trails and privacy-by-design architecture",
-      "Scaling to support large enterprise deployments — solved with microservices architecture and horizontal scaling strategies"
-    ],
-    solutions: [
-      "Implemented Riverpod providers for reactive state management, ensuring real-time updates across all attendance features",
-      "Created advanced geofencing system with multiple validation layers and AI-powered fraud detection",
-      "Developed intelligent offline-first architecture with SQLite local storage and sophisticated sync mechanisms",
-      "Built comprehensive analytics engine with real-time processing and predictive insights",
-      "Implemented biometric authentication system with facial recognition and fingerprint scanning",
-      "Created scalable backend architecture supporting enterprise-level deployments and real-time processing",
-      "Developed advanced security framework with encryption, tamper detection, and compliance features",
-      "Built flexible integration framework supporting various HR, payroll, and enterprise systems",
-      "Implemented AI-powered fraud detection using machine learning algorithms and pattern recognition",
-      "Created comprehensive reporting system with automated compliance reporting and trend analysis",
-      "Developed emergency response system with panic buttons and automated alert escalation",
-      "Built responsive web and mobile interfaces with accessibility features and multi-language support"
-    ],
-    category: "Mobile App",
-    status: "Completed",
-    duration: "6 months",
-    teamSize: 5
-  },
-  {
-    id: 8,
-    title: "Kebar Restaurant App",
-    description: "Mobile restaurant app built with Flutter, powered by a Golang backend.",
-    detailedDescription: "A full‑stack restaurant application delivering a smooth ordering experience. The Flutter client (BLoC, feature‑first) provides category search, rich menu pages, dietary filters, and a streamlined cart/checkout. Orders update in real time with status notifications and digital receipts. The Golang backend exposes a JWT‑secured GraphQL API (queries/subscriptions/mutations), with role‑based admin for menu/pricing and integrations with payment gateways. It supports promo codes, taxes/fees, and order throttling during peak hours. Images are optimized with caching and responsive sizes to keep UI fast on mobile networks. The system is designed for operational reliability with retries, idempotent order submissions, and clear error states for payment edge cases.",
-    image: "/assets/kebar resturant.png",
-    videoUrl: "",
-    documentUrl: "",
-    screenshots: [],
-    technologies: ["Flutter", "Dart", "BLoC", "Clean Architecture", "GraphQL", "Apollo Client", "JWT", "Golang (Backend)", "PostgreSQL"],
-    github: "#",
-    demo: "#",
-    features: [
-      "Rich menu browsing with categories, search, and dietary filters",
-      "Cart, checkout, and order tracking with clear error recovery",
-      "Digital invoices/receipts and order history",
-      "Push notifications for order status and ready‑for‑pickup",
-      "Admin GraphQL mutations/queries for menu, pricing, promos, and availability windows",
-      "Responsive layouts for phones and tablets with image caching",
-      "Loyalty points, promo codes, and discounts at checkout",
-      "Pickup/delivery scheduling with time windows and capacity limits",
-      "Address validation, delivery zones, and fee rules",
-      "Real‑time order status via WebSocket/FCM updates",
-      "Retryable payments and idempotent order submission",
-      "Offline cart persistence and session restore",
-      "Accessibility: larger touch targets, screen reader labels, color contrast",
-      "Operational dashboards for order queue, kitchen view, and throttling"
-    ],
-    challenges: [
-      "Synchronizing cart and orders across devices — solved with server‑side sessions",
-      "Payment integration and secure token handling — solved with PCI‑aware flows and tokenization",
-      "Optimizing image delivery and caching — solved with responsive sizes and CDN",
-      "Peak‑hour load and order bursts — solved with throttling, queues, and backpressure",
-      "Flaky networks and mobile disruptions — solved with retries, timeouts, and idempotency keys",
-      "Menu changes and stock concurrency — solved with versioned menus and optimistic validation",
-      "Taxes, tips, and rounding across regions — solved with deterministic pricing engine",
-      "Push delivery reliability — solved with topic routing, retries, and fallbacks",
-      "Privacy and secure storage — solved with encrypted tokens and scoped permissions"
-    ],
-    category: "Mobile App",
-    status: "Completed",
-    duration: "3 months",
-    teamSize: 2
-  }
-];
+// This file no longer exports hardcoded data
+// All projects are fetched from Contentful via src/services/contentful.js
 
-export default projects;
+export default [];

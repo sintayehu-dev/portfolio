@@ -178,30 +178,38 @@ const ProjectDetail = ({ project, onClose, isVisible }) => {
           {/* Action buttons */}
           <section className="project-section">
             <div className="project-actions">
-              {project.github && project.github !== '#' && (
-                <a 
-                  href={project.github} 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="project-action-btn github-btn"
-                  onClick={(e) => {
+              <a
+                href={project.github && project.github !== '#' ? project.github : undefined}
+                target={project.github && project.github !== '#' ? '_blank' : undefined}
+                rel={project.github && project.github !== '#' ? 'noopener noreferrer' : undefined}
+                className="project-action-btn github-btn"
+                onClick={(e) => {
+                  // If GitHub link is NOT valid, prevent default and show toast
+                  if (!project.github || project.github === '#') {
                     e.preventDefault();
                     showToast("Contact me if you want to github link url");
-                  }}
-                >
-                  <span>View Code</span>
-                </a>
-              )}
-              {project.demo && project.demo !== '#' && (
-                <a 
-                  href={project.demo} 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="project-action-btn demo-btn"
-                >
-                  <span>Live Demo</span>
-                </a>
-              )}
+                  }
+                  // Otherwise, let the link work normally via href
+                }}
+              >
+                <span>View Code</span>
+              </a>
+              <a
+                href={project.demo && project.demo !== '#' ? project.demo : undefined}
+                target={project.demo && project.demo !== '#' ? '_blank' : undefined}
+                rel={project.demo && project.demo !== '#' ? 'noopener noreferrer' : undefined}
+                className="project-action-btn demo-btn"
+                onClick={(e) => {
+                  // If demo link is NOT valid, prevent default and show toast
+                  if (!project.demo || project.demo === '#') {
+                    e.preventDefault();
+                    showToast("Contact me to get the APK");
+                  }
+                  // Otherwise, let the link work normally via href
+                }}
+              >
+                <span>Live Demo</span>
+              </a>
             </div>
           </section>
         </div>

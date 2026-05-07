@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import ProjectDetail from '../components/ProjectDetail/ProjectDetail';
 import { useProjectDetail } from '../hooks/useProjectDetail';
@@ -9,6 +9,11 @@ const ProjectDetailPage = () => {
   const navigate = useNavigate();
   const { project, loading, error } = useProjectDetail(id);
   
+  // Scroll to top when component mounts or project changes
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [id]);
+
   const handleClose = () => {
     navigate('/projects');
   };
