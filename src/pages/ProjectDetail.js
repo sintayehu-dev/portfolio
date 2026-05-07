@@ -9,6 +9,18 @@ const ProjectDetailPage = () => {
   const navigate = useNavigate();
   const { project, loading, error } = useProjectDetail(id);
   
+  // Debug logging
+  useEffect(() => {
+    if (project) {
+      console.log('Project data in ProjectDetailPage:', {
+        title: project.title,
+        hasVideoUrl: !!project.videoUrl,
+        videoUrl: project.videoUrl,
+        videoUrlLength: project.videoUrl?.length
+      });
+    }
+  }, [project]);
+
   // Scroll to top when component mounts or project changes
   useEffect(() => {
     window.scrollTo(0, 0);

@@ -118,15 +118,35 @@ const ProjectDetail = ({ project, onClose, isVisible }) => {
           {project.videoUrl && (
             <section className="project-section">
               <h2>Demo Video</h2>
-              <div style={{ position: 'relative', paddingBottom: '56.25%', height: 0, overflow: 'hidden', borderRadius: 8, border: '1px solid var(--border-color)' }}>
-                <iframe
-                  title={`${project.title} demo video`}
-                  src={project.videoUrl}
-                  frameBorder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  allowFullScreen
-                  style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}
-                />
+              <div style={{
+                position: 'relative',
+                paddingBottom: '56.25%', // 16:9 aspect ratio (like YouTube)
+                height: 0,
+                overflow: 'hidden',
+                borderRadius: 8,
+                border: '1px solid var(--border-color)',
+                backgroundColor: '#000'
+              }}>
+                <video
+                  controls
+                  crossOrigin="anonymous"
+                  style={{
+                    position: 'absolute',
+                    top: 0,
+                    left: 0,
+                    width: '100%',
+                    height: '100%',
+                    objectFit: 'contain'
+                  }}
+                  preload="metadata"
+                  onLoadStart={() => console.log('Video loading started')}
+                  onLoadedMetadata={() => console.log('Video metadata loaded')}
+                  onCanPlay={() => console.log('Video can play')}
+                  onError={(e) => console.error('Video error:', e)}
+                >
+                  <source src={project.videoUrl} type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
               </div>
             </section>
           )}
@@ -193,22 +213,6 @@ const ProjectDetail = ({ project, onClose, isVisible }) => {
                 }}
               >
                 <span>View Code</span>
-              </a>
-              <a
-                href={project.demo && project.demo !== '#' ? project.demo : undefined}
-                target={project.demo && project.demo !== '#' ? '_blank' : undefined}
-                rel={project.demo && project.demo !== '#' ? 'noopener noreferrer' : undefined}
-                className="project-action-btn demo-btn"
-                onClick={(e) => {
-                  // If demo link is NOT valid, prevent default and show toast
-                  if (!project.demo || project.demo === '#') {
-                    e.preventDefault();
-                    showToast("Contact me to get the APK");
-                  }
-                  // Otherwise, let the link work normally via href
-                }}
-              >
-                <span>Live Demo</span>
               </a>
             </div>
           </section>

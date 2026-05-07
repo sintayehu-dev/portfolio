@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './Contact.css';
-import { FaPaperPlane } from 'react-icons/fa';
+import { FaPaperPlane, FaCheckCircle } from 'react-icons/fa';
+import { useToast } from '../../contexts/ToastContext';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -11,12 +12,17 @@ const Contact = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState('');
+  const { showToast } = useToast();
 
   const handleChange = (e) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value
     });
+    // Clear status when user starts typing again
+    if (submitStatus) {
+      setSubmitStatus('');
+    }
   };
 
   const handleSubmit = async (e) => {
@@ -28,6 +34,7 @@ const Contact = () => {
     if (!formspreeId) {
       setSubmitStatus('error');
       setIsSubmitting(false);
+      showToast('Form configuration error. Please contact the administrator.');
       return;
     }
 
@@ -49,11 +56,14 @@ const Contact = () => {
       if (response.ok) {
         setSubmitStatus('success');
         setFormData({ name: '', email: '', subject: '', message: '' });
+        showToast('Message sent successfully! I\'ll get back to you soon. 🎉');
       } else {
         setSubmitStatus('error');
+        showToast('Failed to send message. Please try again.');
       }
     } catch (error) {
       setSubmitStatus('error');
+      showToast('Network error. Please check your connection and try again.');
     } finally {
       setIsSubmitting(false);
     }
@@ -151,11 +161,16 @@ const Contact = () => {
                 )}
               </button>
 
-              {submitStatus && (
-                <div className={`submit-status ${submitStatus}`}>
-                  {submitStatus === 'success'
-                    ? 'Message sent successfully! I\'ll get back to you soon.'
-                    : 'Failed to send message. Please try again or check form setup.'}
+              {submitStatus === 'success' && (
+                <div className="submit-status success">
+                  <FaCheckCircle style={{ marginRight: '0.5rem', fontSize: '1.2rem' }} />
+                  Message sent successfully! I'll get back to you soon.
+                </div>
+              )}
+
+              {submitStatus === 'error' && (
+                <div className="submit-status error">
+                  Failed to send message. Please try again or contact me directly.
                 </div>
               )}
             </form>

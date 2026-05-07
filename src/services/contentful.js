@@ -31,6 +31,20 @@ const client = createClient({
 const transformProject = (entry) => {
   const fields = entry.fields;
   
+  // Debug logging for video field
+  console.log('Video field data:', {
+    hasVideoUrl: !!fields.videoUrl,
+    hasVedioUrl: !!fields.vedioUrl,
+    videoUrlType: typeof fields.videoUrl,
+    vedioUrlType: typeof fields.vedioUrl,
+    videoUrlFields: fields.videoUrl?.fields,
+    vedioUrlFields: fields.vedioUrl?.fields,
+    videoUrlFile: fields.videoUrl?.fields?.file,
+    vedioUrlFile: fields.vedioUrl?.fields?.file,
+    videoUrlFileUrl: fields.videoUrl?.fields?.file?.url,
+    vedioUrlFileUrl: fields.vedioUrl?.fields?.file?.url
+  });
+
   // Helper function to ensure array format (handles both list and single text fields)
   const ensureArray = (value) => {
     if (!value) return [];
@@ -51,7 +65,9 @@ const transformProject = (entry) => {
     screenshots: fields.screenshots?.map(img => 
       img.fields?.file?.url ? `https:${img.fields.file.url}` : ''
     ).filter(Boolean) || [],
-    videoUrl: fields.videoUrl || '',
+    videoUrl: (fields.videoUrl?.fields?.file?.url || fields.vedioUrl?.fields?.file?.url)
+      ? `https:${(fields.videoUrl?.fields?.file?.url || fields.vedioUrl?.fields?.file?.url)}`
+      : '',
     documentUrl: fields.documentUrl || '',
     technologies: ensureArray(fields.technologies),
     features: ensureArray(fields.features),
@@ -74,7 +90,8 @@ export const fetchProjects = async () => {
   try {
     const response = await client.getEntries({
       content_type: 'pproject', // Changed to match your Contentful model name
-      order: '-sys.createdAt' // Order by creation date (newest first)
+      order: 'fields.order,-sys.createdAt', // Order by custom order field, then by creation date
+      include: 2 // Include linked assets (like videos)
     });
 
     return response.items.map(transformProject);
@@ -89,7 +106,9 @@ export const fetchProjects = async () => {
  */
 export const fetchProjectById = async (id) => {
   try {
-    const entry = await client.getEntry(id);
+    const entry = await client.getEntry(id, {
+      include: 2 // Include linked assets (like videos)
+    });
     return transformProject(entry);
   } catch (error) {
     console.error(`Error fetching project ${id} from Contentful:`, error);
@@ -105,7 +124,8 @@ export const fetchProjectBySlug = async (slug) => {
     const response = await client.getEntries({
       content_type: 'pproject', // Changed to match your Contentful model name
       'fields.slug': slug,
-      limit: 1
+      limit: 1,
+      include: 2 // Include linked assets (like videos)
     });
 
     if (response.items.length === 0) {
@@ -127,7 +147,8 @@ export const fetchProjectsByCategory = async (category) => {
     const response = await client.getEntries({
       content_type: 'pproject', // Changed to match your Contentful model name
       'fields.category': category,
-      order: '-sys.createdAt'
+      order: '-sys.createdAt',
+      include: 2 // Include linked assets (like videos)
     });
 
     return response.items.map(transformProject);
